@@ -1,0 +1,14 @@
+include:
+#include <s3eTypes.h>
+
+functions:
+s3eResult init(const char* applifierID, bool orientationHomeButtonDown, bool orientationHomeButtonRight, bool orientationHomeButtonLeft, bool orientationHomeButtonUp) S3E_RESULT_ERROR run_on_os_thread
+bool showBanner(int positionX, int positionY) false run_on_os_thread
+bool hideBanner() false run_on_os_thread
+bool prepareFeaturedGames() false run_on_os_thread
+bool prepareInterstitial() false run_on_os_thread
+bool isFeaturedGamesReady() false run_on_os_thread
+bool isInterstitialReady() false run_on_os_thread
+bool showFeaturedGames() false run_on_os_thread
+bool showInterstitial() false run_on_os_thread
+bool pauseRenderer() false run_on_os_thread

@@ -1,0 +1,106 @@
+# mkf file for building extension ApplifierCrossPromotion.
+# NOTE: This file was originally written by the extension builder, but will not
+# be overwritten (unless --force is specified) and is intended to be modified.
+display_name "Extensions/ApplifierCrossPromotion"
+
+includepath source/h
+includepath h
+
+defines
+{
+    #Define the verbose channel to be off by default (but controllable by icf)
+    IW_TRACE_CHANNEL_APPLIFIERCROSSPROMOTION_VERBOSE=2
+
+    #This macro indicates that this extension is being built
+    S3E_EXT_APPLIFIERCROSSPROMOTION
+}
+
+#This command re-generates the relevant source files from the s4e when
+#the mkb is run
+extension
+{
+    ("$MARMALADE_ROOT/extensions/builder")
+    "make_extension ApplifierCrossPromotion.s4e"
+}
+
+#include the extension builder subproject
+subproject "$MARMALADE_ROOT/s3e/edk"
+
+if {{defined I3D_OS_IPHONE}}
+{
+	includepath
+    {
+        source/iphone/
+        source/iphone/3rdparty/Facebook
+        source/iphone/3rdparty/SBJSON
+        source/iphone/3rdparty/SDURLCache
+    }
+	
+    files
+    {
+        ["source"]
+        (use_first_found, source/iphone, source/generic)
+        ApplifierCrossPromotion_platform.mm
+		
+		#Add any iphone-specific files here
+        Applifier.m
+        ApplifierView.m
+        3rdparty/Facebook/ApplifierFacebook.m
+        3rdparty/Facebook/ApplifierFBDialog.m
+        3rdparty/Facebook/ApplifierFBLoginDialog.m
+        3rdparty/Facebook/ApplifierFBRequest.m
+        3rdparty/SBJSON/ApplifierNSObjectSBJSON.m
+        3rdparty/SBJSON/ApplifierNSStringSBJSON.m
+        3rdparty/SBJSON/ApplifierSBJSON.m
+        3rdparty/SBJSON/ApplifierSBJsonBase.m
+        3rdparty/SBJSON/ApplifierSBJsonParser.m
+        3rdparty/SBJSON/ApplifierSBJsonWriter.m
+        3rdparty/SDURLCache/ApplifierSDURLCache.m
+
+    }
+}
+
+if {{defined I3D_OS_WINDOWS}}
+{
+    files
+    {
+        ["source"]
+        (use_first_found, source/windows, source/generic)
+        ApplifierCrossPromotion_platform.cpp
+        #Add any windows-specific files here
+    }
+}
+
+if {{defined S3E_ANDROID}}
+{
+    files
+    {
+        ["source"]
+        (use_first_found, source/android, source/generic)
+        ApplifierCrossPromotion_platform.cpp
+        #Add any android-specific files here
+    }
+}
+
+files
+{
+
+    # Add any platform-independent files here
+    # Note that if the file exists in the platform-specific directory
+    # it will be taken from there instead of 'generic'
+    ApplifierCrossPromotion_register.cpp
+    ApplifierCrossPromotion.cpp
+
+    ["h"]
+    (source/h)
+    ApplifierCrossPromotion_internal.h
+    ApplifierCrossPromotion_autodefs.h
+
+    ["docs"]
+    (interface)
+    ApplifierCrossPromotion.defines.txt
+
+    []
+    (.)
+    ApplifierCrossPromotion.s4e
+}

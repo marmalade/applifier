@@ -1,0 +1,388 @@
+
+Discarded input sections
+
+ _ZN7_JNIEnv11GetMethodIDEP7_jclassPKcS3_
+                0x00000000        0x0 release/ApplifierCrossPromotion_platform.os
+ _ZN7_JNIEnv17CallBooleanMethodEP8_jobjectP10_jmethodIDz
+                0x00000000        0x0 release/ApplifierCrossPromotion_platform.os
+ _ZN7_JNIEnv13CallIntMethodEP8_jobjectP10_jmethodIDz
+                0x00000000        0x0 release/ApplifierCrossPromotion_platform.os
+ _ZN7_JNIEnv9NewObjectEP7_jclassP10_jmethodIDz
+                0x00000000        0x0 release/ApplifierCrossPromotion_platform.os
+ .note.GNU-stack
+                0x00000000        0x0 release/ApplifierCrossPromotion_platform.os
+ .note.GNU-stack
+                0x00000000        0x0 release/ApplifierCrossPromotion.os
+ .note.GNU-stack
+                0x00000000        0x0 release/ApplifierCrossPromotion_register.os
+
+Memory Configuration
+
+Name             Origin             Length             Attributes
+*default*        0x00000000         0xffffffff
+
+Linker script and memory map
+
+LOAD release/ApplifierCrossPromotion_platform.os
+LOAD release/ApplifierCrossPromotion.os
+LOAD release/ApplifierCrossPromotion_register.os
+LOAD /Developer/Marmalade/5.1/s3e/edk/lib/android/libedkcore.a
+LOAD /Developer/Marmalade/5.1/s3e/edk/lib/android/libplaceholderplaceholderplaceholderplaceholderplaceholder.so
+LOAD /Developer/android-ndk-r6/platforms/android-9/arch-arm/usr/lib/libc.so
+LOAD /Developer/android-ndk-r6/platforms/android-9/arch-arm/usr/lib/libm.so
+LOAD /Developer/android-ndk-r6/platforms/android-9/arch-arm/usr/lib/liblog.so
+LOAD /Developer/android-ndk-r6/platforms/android-9/arch-arm/usr/lib/libstdc++.so
+                0x000000b4                . = (0x0 + SIZEOF_HEADERS)
+
+.note.gnu.build-id
+ *(.note.gnu.build-id)
+
+.hash           0x000000b4       0x58
+ *(.hash)
+ .hash          0x000000b4       0x58 release/ApplifierCrossPromotion_platform.os
+
+.gnu.hash
+ *(.gnu.hash)
+
+.dynsym         0x0000010c      0x110
+ *(.dynsym)
+ .dynsym        0x0000010c      0x110 release/ApplifierCrossPromotion_platform.os
+
+.dynstr         0x0000021c      0x100
+ *(.dynstr)
+ .dynstr        0x0000021c      0x100 release/ApplifierCrossPromotion_platform.os
+
+.gnu.version    0x0000031c        0x0
+ *(.gnu.version)
+ .gnu.version   0x00000000        0x0 release/ApplifierCrossPromotion_platform.os
+
+.gnu.version_d  0x0000031c        0x0
+ *(.gnu.version_d)
+ .gnu.version_d
+                0x00000000        0x0 release/ApplifierCrossPromotion_platform.os
+
+.gnu.version_r  0x0000031c        0x0
+ *(.gnu.version_r)
+ .gnu.version_r
+                0x00000000        0x0 release/ApplifierCrossPromotion_platform.os
+
+.rel.dyn        0x0000031c       0x60
+ *(.rel.init)
+ *(.rel.text .rel.text.* .rel.gnu.linkonce.t.*)
+ *(.rel.fini)
+ *(.rel.rodata .rel.rodata.* .rel.gnu.linkonce.r.*)
+ *(.rel.data.rel.ro* .rel.gnu.linkonce.d.rel.ro.*)
+ *(.rel.data .rel.data.* .rel.gnu.linkonce.d.*)
+ *(.rel.tdata .rel.tdata.* .rel.gnu.linkonce.td.*)
+ *(.rel.tbss .rel.tbss.* .rel.gnu.linkonce.tb.*)
+ *(.rel.ctors)
+ *(.rel.dtors)
+ *(.rel.got)
+ .rel.got       0x0000031c       0x60 release/ApplifierCrossPromotion_platform.os
+ *(.rel.bss .rel.bss.* .rel.gnu.linkonce.b.*)
+
+.rela.dyn
+ *(.rela.init)
+ *(.rela.text .rela.text.* .rela.gnu.linkonce.t.*)
+ *(.rela.fini)
+ *(.rela.rodata .rela.rodata.* .rela.gnu.linkonce.r.*)
+ *(.rela.data .rela.data.* .rela.gnu.linkonce.d.*)
+ *(.rela.tdata .rela.tdata.* .rela.gnu.linkonce.td.*)
+ *(.rela.tbss .rela.tbss.* .rela.gnu.linkonce.tb.*)
+ *(.rela.ctors)
+ *(.rela.dtors)
+ *(.rela.got)
+ *(.rela.bss .rela.bss.* .rela.gnu.linkonce.b.*)
+
+.rel.plt        0x0000037c       0x18
+ *(.rel.plt)
+ .rel.plt       0x0000037c       0x18 release/ApplifierCrossPromotion_platform.os
+
+.rela.plt
+ *(.rela.plt)
+
+.init
+ *(.init)
+
+.plt            0x00000394       0x38
+ *(.plt)
+ .plt           0x00000394       0x38 release/ApplifierCrossPromotion_platform.os
+
+.text           0x000003cc      0xbe8
+ *(.text .stub .text.* .gnu.linkonce.t.*)
+ .text          0x000003cc      0x7bc release/ApplifierCrossPromotion_platform.os
+                0x00000840                _Z28isInterstitialReady_platformv
+                0x000003cc                _Z41ApplifierCrossPromotionTerminate_platformv
+                0x000009c0                _Z19hideBanner_platformv
+                0x000003d0                _Z36ApplifierCrossPromotionInit_platformv
+                0x000007e0                _Z26showFeaturedGames_platformv
+                0x00000aec                _Z13init_platformPKcbbbb
+                0x00000720                _Z22pauseRenderer_platformv
+                0x00000780                _Z25showInterstitial_platformv
+                0x000008a0                _Z29isFeaturedGamesReady_platformv
+                0x00000960                _Z29prepareFeaturedGames_platformv
+                0x00000900                _Z28prepareInterstitial_platformv
+                0x00000a20                _Z19showBanner_platformii
+ .text._ZN7_JNIEnv11GetMethodIDEP7_jclassPKcS3_
+                0x00000b88       0x1c release/ApplifierCrossPromotion_platform.os
+                0x00000b88                _ZN7_JNIEnv11GetMethodIDEP7_jclassPKcS3_
+ .text._ZN7_JNIEnv17CallBooleanMethodEP8_jobjectP10_jmethodIDz
+                0x00000ba4       0x38 release/ApplifierCrossPromotion_platform.os
+                0x00000ba4                _ZN7_JNIEnv17CallBooleanMethodEP8_jobjectP10_jmethodIDz
+ .text._ZN7_JNIEnv13CallIntMethodEP8_jobjectP10_jmethodIDz
+                0x00000bdc       0x38 release/ApplifierCrossPromotion_platform.os
+                0x00000bdc                _ZN7_JNIEnv13CallIntMethodEP8_jobjectP10_jmethodIDz
+ .text._ZN7_JNIEnv9NewObjectEP7_jclassP10_jmethodIDz
+                0x00000c14       0x38 release/ApplifierCrossPromotion_platform.os
+                0x00000c14                _ZN7_JNIEnv9NewObjectEP7_jclassP10_jmethodIDz
+ .text          0x00000c4c       0xd0 release/ApplifierCrossPromotion.os
+                0x00000c9c                prepareInterstitial
+                0x00000cbc                hideBanner
+                0x00000d0c                _Z27ApplifierCrossPromotionInitv
+                0x00000c6c                showFeaturedGames
+                0x00000c4c                pauseRenderer
+                0x00000ccc                showBanner
+                0x00000c8c                isFeaturedGamesReady
+                0x00000c7c                isInterstitialReady
+                0x00000cdc                init
+                0x00000c5c                showInterstitial
+                0x00000cac                prepareFeaturedGames
+                0x00000cfc                _Z32ApplifierCrossPromotionTerminatev
+ .text          0x00000d1c      0x298 release/ApplifierCrossPromotion_register.os
+                0x00000d1c                _Z34ApplifierCrossPromotionRegisterExtv
+                0x00000e68                RegisterExt
+ *(.gnu.warning)
+ *(.glue_7t)
+ .glue_7t       0x00000000        0x0 linker stubs
+ *(.glue_7)
+ .glue_7        0x00000000        0x0 linker stubs
+ *(.vfp11_veneer)
+ .vfp11_veneer  0x00000000        0x0 linker stubs
+ *(.v4_bx)
+ .v4_bx         0x00000000        0x0 linker stubs
+
+.fini
+ *(.fini)
+                0x00000fb4                PROVIDE (__etext, .)
+                0x00000fb4                PROVIDE (_etext, .)
+                0x00000fb4                PROVIDE (etext, .)
+
+.rodata         0x00000fb4       0xfc
+ *(.rodata .rodata.* .gnu.linkonce.r.*)
+ .rodata.str1.4
+                0x00000fb4       0xfc release/ApplifierCrossPromotion_platform.os
+ .rodata.str1.4
+                0x00000000       0x18 release/ApplifierCrossPromotion_register.os
+
+.rodata1
+ *(.rodata1)
+
+.ARM.extab
+ *(.ARM.extab* .gnu.linkonce.armextab.*)
+                0x000010b0                __exidx_start = .
+
+.ARM.exidx
+ *(.ARM.exidx* .gnu.linkonce.armexidx.*)
+                0x000010b0                __exidx_end = .
+
+.eh_frame_hdr
+ *(.eh_frame_hdr)
+
+.eh_frame
+ *(.eh_frame)
+
+.gcc_except_table
+ *(.gcc_except_table .gcc_except_table.*)
+                0x000010b0                . = (ALIGN (0x1000) - ((0x1000 - .) & 0xfff))
+                0x000020b0                . = (0x1000 DATA_SEGMENT_ALIGN 0x1000)
+
+.eh_frame
+ *(.eh_frame)
+
+.gcc_except_table
+ *(.gcc_except_table .gcc_except_table.*)
+
+.tdata
+ *(.tdata .tdata.* .gnu.linkonce.td.*)
+
+.tbss
+ *(.tbss .tbss.* .gnu.linkonce.tb.*)
+ *(.tcommon)
+
+.preinit_array
+ *(.preinit_array)
+
+.init_array
+ *(SORT(.init_array.*))
+ *(.init_array)
+
+.fini_array
+ *(.fini_array)
+ *(SORT(.fini_array.*))
+
+.ctors
+ *crtbegin.o(.ctors)
+ *crtbegin?.o(.ctors)
+ *(EXCLUDE_FILE(*crtend?.o *crtend.o) .ctors)
+ *(SORT(.ctors.*))
+ *(.ctors)
+
+.dtors
+ *crtbegin.o(.dtors)
+ *crtbegin?.o(.dtors)
+ *(EXCLUDE_FILE(*crtend?.o *crtend.o) .dtors)
+ *(SORT(.dtors.*))
+ *(.dtors)
+
+.jcr
+ *(.jcr)
+
+.data.rel.ro
+ *(.data.rel.ro.local* .gnu.linkonce.d.rel.ro.local.*)
+ *(.data.rel.ro* .gnu.linkonce.d.rel.ro.*)
+
+.dynamic        0x000020b0       0xc0
+ *(.dynamic)
+ .dynamic       0x000020b0       0xc0 release/ApplifierCrossPromotion_platform.os
+                0x000020b0                _DYNAMIC
+                0x00002170                . = (. DATA_SEGMENT_RELRO_END 0x0)
+
+.got            0x00002170       0x48
+ *(.got.plt)
+ .got.plt       0x00002170       0x18 release/ApplifierCrossPromotion_platform.os
+                0x00002170                _GLOBAL_OFFSET_TABLE_
+ *(.got)
+ .got           0x00002188       0x30 release/ApplifierCrossPromotion_platform.os
+
+.data           0x000021b8        0x0
+                0x000021b8                __data_start = .
+ *(.data .data.* .gnu.linkonce.d.*)
+ .data          0x000021b8        0x0 release/ApplifierCrossPromotion_platform.os
+ .data          0x000021b8        0x0 release/ApplifierCrossPromotion.os
+ .data          0x000021b8        0x0 release/ApplifierCrossPromotion_register.os
+
+.data1
+ *(.data1)
+                0x000021b8                _edata = .
+                0x000021b8                PROVIDE (edata, .)
+                0x000021b8                __bss_start = .
+                0x000021b8                __bss_start__ = .
+
+.bss            0x000021b8       0x2c
+ *(.dynbss)
+ .dynbss        0x00000000        0x0 release/ApplifierCrossPromotion_platform.os
+ *(.bss .bss.* .gnu.linkonce.b.*)
+ .bss           0x000021b8       0x2c release/ApplifierCrossPromotion_platform.os
+ .bss           0x000021e4        0x0 release/ApplifierCrossPromotion.os
+ .bss           0x000021e4        0x0 release/ApplifierCrossPromotion_register.os
+ *(COMMON)
+                0x000021e4                . = ALIGN ((. != 0x0)?0x4:0x1)
+                0x000021e4                _bss_end__ = .
+                0x000021e4                __bss_end__ = .
+                0x000021e4                . = ALIGN (0x4)
+                0x000021e4                . = ALIGN (0x4)
+                0x000021e4                __end__ = .
+                0x000021e4                _end = .
+                0x000021e4                PROVIDE (end, .)
+                0x000021e4                . = DATA_SEGMENT_END (.)
+
+.stab
+ *(.stab)
+
+.stabstr
+ *(.stabstr)
+
+.stab.excl
+ *(.stab.excl)
+
+.stab.exclstr
+ *(.stab.exclstr)
+
+.stab.index
+ *(.stab.index)
+
+.stab.indexstr
+ *(.stab.indexstr)
+
+.comment        0x00000000       0x36
+ *(.comment)
+ .comment       0x00000000       0x12 release/ApplifierCrossPromotion_platform.os
+ .comment       0x00000012       0x12 release/ApplifierCrossPromotion.os
+ .comment       0x00000024       0x12 release/ApplifierCrossPromotion_register.os
+
+.debug
+ *(.debug)
+
+.line
+ *(.line)
+
+.debug_srcinfo
+ *(.debug_srcinfo)
+
+.debug_sfnames
+ *(.debug_sfnames)
+
+.debug_aranges
+ *(.debug_aranges)
+
+.debug_pubnames
+ *(.debug_pubnames)
+
+.debug_info
+ *(.debug_info .gnu.linkonce.wi.*)
+
+.debug_abbrev
+ *(.debug_abbrev)
+
+.debug_line
+ *(.debug_line)
+
+.debug_frame
+ *(.debug_frame)
+
+.debug_str
+ *(.debug_str)
+
+.debug_loc
+ *(.debug_loc)
+
+.debug_macinfo
+ *(.debug_macinfo)
+
+.debug_weaknames
+ *(.debug_weaknames)
+
+.debug_funcnames
+ *(.debug_funcnames)
+
+.debug_typenames
+ *(.debug_typenames)
+
+.debug_varnames
+ *(.debug_varnames)
+
+.debug_pubtypes
+ *(.debug_pubtypes)
+
+.debug_ranges
+ *(.debug_ranges)
+
+.gnu.attributes
+ *(.gnu.attributes)
+
+.note.gnu.arm.ident
+ *(.note.gnu.arm.ident)
+
+/DISCARD/
+ *(.note.GNU-stack)
+ *(.gnu_debuglink)
+OUTPUT(/Users/antti/Documents/applifier-sdk-ios/marmalade-extension/ApplifierCrossPromotion/lib/android/libApplifierCrossPromotion.so elf32-littlearm)
+
+.ARM.attributes
+                0x00000000       0x28
+ .ARM.attributes
+                0x00000000       0x28 release/ApplifierCrossPromotion_platform.os
+ .ARM.attributes
+                0x00000028       0x28 release/ApplifierCrossPromotion.os
+ .ARM.attributes
+                0x00000050       0x28 release/ApplifierCrossPromotion_register.os

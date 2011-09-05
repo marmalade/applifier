@@ -1,0 +1,18 @@
+#!/usr/bin/env mkb
+# Builder mkb file for the ApplifierCrossPromotion extension on android
+
+platform LINUX
+
+buildtype(SCONS, ARM)
+
+define S3E_ANDROID
+
+options
+{
+    dll
+    output-name="lib/android/libApplifierCrossPromotion.so"
+    output-name-debug="lib/android/libApplifierCrossPromotion_d.so"
+}
+define S3E_BUILD_EXT
+
+subproject ApplifierCrossPromotion_build
