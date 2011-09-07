@@ -13,8 +13,12 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
 #import <UIKit/UIKit.h>
 
+#define BANNERHEIGHT 50
+#define BANNERWIDTH 310
+#define APPLIFIER_VIEW_TAG 10298305
 
 @interface ApplifierView : UIView {
     UIWebView *webView;

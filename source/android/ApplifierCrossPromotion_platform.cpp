@@ -16,6 +16,7 @@
 static jobject g_Obj;
 static jmethodID g_init;
 static jmethodID g_showBanner;
+static jmethodID g_moveBanner;
 static jmethodID g_hideBanner;
 static jmethodID g_prepareFeaturedGames;
 static jmethodID g_prepareInterstitial;
@@ -54,6 +55,10 @@ s3eResult ApplifierCrossPromotionInit_platform()
 
     g_showBanner = env->GetMethodID(cls, "showBanner", "(II)Z");
     if (!g_showBanner)
+        goto fail;
+
+    g_moveBanner = env->GetMethodID(cls, "moveBanner", "(II)Z");
+    if (!g_moveBanner)
         goto fail;
 
     g_hideBanner = env->GetMethodID(cls, "hideBanner", "()Z");
@@ -126,6 +131,12 @@ bool showBanner_platform(int positionX, int positionY)
 {
     JNIEnv* env = s3eEdkJNIGetEnv();
     return (bool)env->CallBooleanMethod(g_Obj, g_showBanner, positionX, positionY);
+}
+
+bool moveBanner_platform(int x, int y)
+{
+    JNIEnv* env = s3eEdkJNIGetEnv();
+    return (bool)env->CallBooleanMethod(g_Obj, g_moveBanner, x, y);
 }
 
 bool hideBanner_platform()

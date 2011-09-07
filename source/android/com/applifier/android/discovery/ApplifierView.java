@@ -34,6 +34,7 @@ import android.webkit.WebStorage;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.FrameLayout;
+import android.widget.FrameLayout.LayoutParams;
 
 public class ApplifierView extends WebView 
 {	
@@ -86,7 +87,7 @@ public class ApplifierView extends WebView
 
 	private ArrayList<View> savedNeighbours;
 
-	private boolean fullscreenActivityEnabled = false;
+	private boolean fullscreenActivityEnabled = true;
 	
 	public ApplifierView(Activity activity, String applifierId) 
 	{
@@ -943,6 +944,10 @@ public class ApplifierView extends WebView
 		//Log.d(_logName, "DeviceID : " + prefix + "_" + deviceId);
 		
 		return prefix + "_" + deviceId;
+	}
+
+	public void setBannerLayoutParams(FrameLayout.LayoutParams lparams) {
+		bannerLayoutParams = lparams;
 	}
 
 

@@ -45,6 +45,6 @@
 */
 
 #import "ApplifierSBJSON.h"
-#import "ApplifierNSObjectSBJSON.h"
-#import "ApplifierNSStringSBJSON.h"
+#import "ApplifierNSObject+SBJSON.h"
+#import "ApplifierNSString+SBJSON.h"
 

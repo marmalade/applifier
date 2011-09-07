@@ -78,6 +78,11 @@ bool showBanner_platform(int positionX, int positionY) {
     return true;
 }
 
+bool moveBanner_platform(int x, int y) {
+	[[Applifier sharedInstance] moveBanner:CGPointMake(x, y)];	
+    return true;
+}
+
 bool hideBanner_platform() {
 	[[Applifier sharedInstance] hideView];	
     return true;

@@ -18,8 +18,13 @@
 #import "ApplifierSBJSON.h"
 #import "ApplifierSDURLCache.h"
 
+#import <CommonCrypto/CommonDigest.h>
+
 #include <sys/types.h>
 #include <sys/sysctl.h>
+#include <sys/socket.h> // Per msqr
+#include <net/if.h>
+#include <net/if_dl.h>
 
 #define APPLIFIER_FACEBOOK_ID @"103673636361992"
 
@@ -42,6 +47,7 @@ static NSMutableArray *supportedOrientations = nil;
 @synthesize applifierView;
 @synthesize targetPosition;
 @synthesize window;
+@synthesize bannerReady;
 @synthesize interstitialReady;
 @synthesize featuredGamesReady;
 @synthesize gameRendererShouldPause;
@@ -65,6 +71,11 @@ static NSMutableArray *supportedOrientations = nil;
     }
     return facebookUrlSchemeRegistered;
 }
+
+- (void) moveBanner:(CGPoint)to {
+    targetPosition = to;
+    [applifierView setBannerPosition: to];
+}   
 
 - (void) sendToDelegate:(SEL)selectorToCall {
     if (gameDelegate != nil && 
@@ -131,6 +142,13 @@ static NSMutableArray *supportedOrientations = nil;
     [applifierView animateBannerTo:targetPosition withScalingFactor:scalingFactor];
 }
 
+- (CGSize) getBannerSize {
+    if (scalingFactor == 0) 
+        return CGSizeZero;
+    else 
+        return CGSizeMake(BANNERWIDTH * scalingFactor, BANNERHEIGHT * scalingFactor);
+}
+
 /**
  * Called when facebook app comes back to this app
  */
@@ -148,12 +166,17 @@ static NSMutableArray *supportedOrientations = nil;
 - (void) initApplfierView {
     state = AFWebViewStateInitInProgress;
     
+    NSString *deviceId2 = [self uniqueDeviceIdentifier];
     NSString *deviceId = [[UIDevice currentDevice] uniqueIdentifier];
     NSString *deviceType = [self getDeviceType];
     NSString *locale = [[NSLocale currentLocale] localeIdentifier];
     NSString *currSysVer = [[UIDevice currentDevice] systemVersion];
     
-    NSString* jsInit = [NSString stringWithFormat:@"applifier.init({'apiVersion' : %d, 'deviceId' : '%@', 'appId' : '%@', 'deviceType' : '%@', 'locale' : '%@', 'platform' : 'ios', firmwareVersion : '%@'});", APPLIFIER_SDK_VERSION, deviceId, APPLIFIER_APP_ID, deviceType, locale, currSysVer];
+    NSString* jsInit = [NSString stringWithFormat:@"applifier.init({'apiVersion' : %d, 'deviceId' : '%@', 'deviceId2' : '%@', 'appId' : '%@', 'deviceType' : '%@', 'locale' : '%@', 'platform' : 'ios', firmwareVersion : '%@'});", APPLIFIER_SDK_VERSION, deviceId, deviceId2, APPLIFIER_APP_ID, deviceType, locale, currSysVer];
+    
+    #ifdef APPLIFIER_DEBUG
+    NSLog(@"Init %@", jsInit);
+    #endif
     
     [applifierView evaluateJavascriptOnWebView:jsInit];
 
@@ -161,6 +184,9 @@ static NSMutableArray *supportedOrientations = nil;
     
     if (pendingCommands != nil) {
         for (NSString *jsCommand in pendingCommands) {
+            #ifdef APPLIFIER_DEBUG
+            NSLog(@"Sending command from queue: %@", jsCommand);
+            #endif
             [applifierView evaluateJavascriptOnWebView:jsCommand];            
         }
         [pendingCommands release];
@@ -227,14 +253,36 @@ static NSMutableArray *supportedOrientations = nil;
             pendingCommands = [[NSMutableArray alloc] init];
         }
         
-        #ifdef APPLIFIER_DEBUG
-        NSLog(@"Queue command: %@", js);
-        #endif
-        [pendingCommands addObject:js];
+        BOOL found = NO;
+        for (NSString *cmd in pendingCommands) {
+            if ([cmd isEqualToString:js]) {
+                found = YES;
+            }
+        }
+        
+        if (found == NO) {
+            #ifdef APPLIFIER_DEBUG
+            NSLog(@"Queue command: %@", js);
+            #endif
+            [pendingCommands addObject:js];
+        }
         
     }
 }
 
+/**
+ * Generates Alert to show on configuration errors only.
+ */
++ (void) showAlert:(NSString*)title msg:(NSString*)text {
+    [[[[UIAlertView alloc] initWithTitle:title 
+                                 message:text
+                                delegate:nil 
+                       cancelButtonTitle:@"Ok" 
+                       otherButtonTitles:nil] 
+      autorelease] 
+     show];
+    
+}
 
 /**
  * Called when the user successfully logged in.
@@ -316,11 +364,18 @@ static NSMutableArray *supportedOrientations = nil;
                 [self sendToDelegate:@selector(applifierFeaturedGamesReady)];
             }
             else if ([view isEqualToString:@"banner"]) { 
+                bannerReady = YES;
                 [self sendToDelegate:@selector(applifierBannerReady)];
                 
                 if(cancelBannerPopup == NO) {
+                    cancelBannerPopup = YES; //prevent two prepare banner calls to flicker the banner
                     [applifierView setBannerPosition:targetPosition];
                     [self sendCommand:@"requestView" withParameter:@"banner"];
+                }
+                else {
+                    #ifdef APPLIFIER_DEBUG
+                    NSLog(@"Cancel banner popup flag is on. Not showing.");
+                    #endif
                 }
             }
         }
@@ -330,19 +385,44 @@ static NSMutableArray *supportedOrientations = nil;
         else if ([command isEqualToString:@"scalingFactor"]) {
             scalingFactor = [[json objectForKey:@"ratio"] doubleValue];
         }
+        else if ([command isEqualToString:@"log"]) {
+            NSLog(@"Javascript: %@", [json objectForKey:@"message"]);
+        }
         [applifierView evaluateJavascriptOnWebView:@"applifier.callNativeComplete();"];
 
         return NO;
     }
     else { //http etc
         if (navigationType == UIWebViewNavigationTypeLinkClicked) {
-            [[UIApplication sharedApplication] openURL:[request URL]];
-            [self hideView];
+
+            
+            NSURLConnection* conn = [[NSURLConnection alloc] initWithRequest:[NSURLRequest requestWithURL:[request URL]] delegate:self startImmediately:YES];
+            [conn release];    
+         
+            //[self hideView];
+            //[[UIApplication sharedApplication] openURL:[request URL]];
+            
             return NO;
         }
 
     }
     return YES;
+}
+
+- (NSURLRequest*)connection:(NSURLConnection*)connection willSendRequest:(NSURLRequest*)request redirectResponse:(NSURLResponse*)response {
+    BOOL itms = [[[request URL] absoluteString] hasPrefix:@"itms://"] || [[[request URL] absoluteString] hasPrefix:@"itms-apps://"];
+    if (itms) {
+        NSString *itmsUrl = [[request URL] absoluteString];
+        NSString *itmsApps = [itmsUrl stringByReplacingOccurrencesOfString:@"itms://" withString:@"itms-apps://"];
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:itmsApps]];
+        [self hideView];
+        return nil;
+    }
+    return request;
+}
+- (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error {
+    NSString *message = [NSString stringWithFormat:@"Cannot connect to AppStore, please try again later. (Error: %@)", [error localizedDescription]];
+    [Applifier showAlert:@"Network error" msg:message];
 }
 
 //NOTE: normally you would just use showBanner. It will appear when its loaded
@@ -381,9 +461,13 @@ static NSMutableArray *supportedOrientations = nil;
  * Call this when you want to show banner on ApplifierView
  */
 - (void) showBannerAt:(CGPoint)position {
+    NSLog(@"Requested banner to %f %f", position.x, position.y);
     cancelBannerPopup = NO;
     targetPosition = position;
-    [self sendCommand:@"prepareView" withParameter:@"banner"];
+    if (bannerReady)
+        [self sendCommand:@"requestView" withParameter:@"banner"];
+    else
+        [self sendCommand:@"prepareView" withParameter:@"banner"];
 }
 
 
@@ -404,6 +488,7 @@ static NSMutableArray *supportedOrientations = nil;
 - (void) releaseResources {
     [applifierView closeWebView];
 
+    bannerReady = NO;
     interstitialReady = NO;
     featuredGamesReady = NO;
     
@@ -415,19 +500,7 @@ static NSMutableArray *supportedOrientations = nil;
     state = AFWebViewStateNotLoaded;
 }
 
-/**
- * Generates Alert to show on configuration errors only.
- */
-+ (void) showAlert:(NSString*)title msg:(NSString*)text {
-    [[[[UIAlertView alloc] initWithTitle:title 
-                                 message:text
-                                delegate:nil 
-                       cancelButtonTitle:@"Ok" 
-                       otherButtonTitles:nil] 
-      autorelease] 
-     show];
 
-}
 
 
 /**
@@ -441,6 +514,7 @@ static NSMutableArray *supportedOrientations = nil;
         applifierView = nil;
         pendingCommands = nil;
         cancelBannerPopup = YES;
+        scalingFactor = 0;
         
         if ([self isFacebookURLSchemeRegistered] == NO) {
             [Applifier showAlert:@"Applifier config error" msg:@"You should add applifier facebook url scheme to url types in plist file. "];
@@ -456,7 +530,7 @@ static NSMutableArray *supportedOrientations = nil;
         if ([APPLIFIER_MOBILE_URL hasSuffix:@"mobile_raw.html"] == NO) {
             NSLog(@"Cache in use");
             ApplifierSDURLCache *urlCache = [[ApplifierSDURLCache alloc] initWithMemoryCapacity:1024*1024   // 1MB mem cache
-                                                                                   diskCapacity:1024*1024*5 // 5MB disk cache
+                                                                                   diskCapacity:1024*1024*10 // 10MB disk cache
                                                                                        diskPath:[ApplifierSDURLCache defaultCachePath]];
             [NSURLCache setSharedURLCache:urlCache];
             [urlCache release];
@@ -495,6 +569,30 @@ static NSMutableArray *supportedOrientations = nil;
     return [Applifier sharedInstance];
 }
 
++ (Applifier*)initWithApplifierID:(NSString*)applifierID withWindow:(UIWindow*)window delegate:(id<ApplifierGameDelegate>)applifierDelegate usingBanners:(BOOL)banners usingInterstitials:(BOOL)interstitials usingFeaturedGames:(BOOL)featuredGames supportedOrientations:(UIDeviceOrientation)orientationsToSupport, ... {
+    APPLIFIER_APP_ID = [applifierID copy];
+    supportedOrientations = [[NSMutableArray alloc] init];
+    va_list args;
+    va_start(args, orientationsToSupport);
+    while (orientationsToSupport) {
+        [supportedOrientations addObject:[NSNumber numberWithInt:orientationsToSupport]];
+        orientationsToSupport = va_arg(args, UIDeviceOrientation);
+    }
+    va_end(args); 
+    
+    //internal init happens here
+    [Applifier sharedInstance].window = window;
+    [Applifier sharedInstance].gameDelegate = applifierDelegate;
+
+    if (banners)
+        [[Applifier sharedInstance] prepareBanner];
+    if (interstitials)
+        [[Applifier sharedInstance] prepareInterstitial];
+    if (featuredGames) 
+        [[Applifier sharedInstance] prepareFeaturedGames];
+    return [Applifier sharedInstance];
+}
+
 + (Applifier*)initWithApplifierID:(NSString*)applifierID withWindow:(UIWindow*)window supportedOrientationsArray:(NSMutableArray*)supportedOrientationsArray {
     APPLIFIER_APP_ID = [applifierID copy];
     
@@ -527,6 +625,78 @@ static NSMutableArray *supportedOrientations = nil;
     }
     return nil; 
 }
+
+// Return the local MAC addy
+// Courtesy of FreeBSD hackers email list
+- (NSString *) getMac {
+    
+    int                 mib[6];
+    size_t              len;
+    char                *buf;
+    unsigned char       *ptr;
+    struct if_msghdr    *ifm;
+    struct sockaddr_dl  *sdl;
+    
+    mib[0] = CTL_NET;
+    mib[1] = AF_ROUTE;
+    mib[2] = 0;
+    mib[3] = AF_LINK;
+    mib[4] = NET_RT_IFLIST;
+    
+    if ((mib[5] = if_nametoindex("en0")) == 0) {
+        printf("Error: if_nametoindex error\n");
+        return NULL;
+    }
+    
+    if (sysctl(mib, 6, NULL, &len, NULL, 0) < 0) {
+        printf("Error: sysctl, take 1\n");
+        return NULL;
+    }
+    
+    if ((buf = malloc(len)) == NULL) {
+        printf("Could not allocate memory. error!\n");
+        return NULL;
+    }
+    
+    if (sysctl(mib, 6, buf, &len, NULL, 0) < 0) {
+        printf("Error: sysctl, take 2");
+        return NULL;
+    }
+    
+    ifm = (struct if_msghdr *)buf;
+    sdl = (struct sockaddr_dl *)(ifm + 1);
+    ptr = (unsigned char *)LLADDR(sdl);
+    NSString *outstring = [NSString stringWithFormat:@"%02X:%02X:%02X:%02X:%02X:%02X", 
+                           *ptr, *(ptr+1), *(ptr+2), *(ptr+3), *(ptr+4), *(ptr+5)];
+    free(buf);
+    
+    return outstring;
+}
+- (NSString *) MD5:(NSString*)original {
+    
+    if(original == nil || [original length] == 0)
+        return nil;
+    
+    const char *value = [original UTF8String];
+    
+    unsigned char outputBuffer[CC_MD5_DIGEST_LENGTH];
+    CC_MD5(value, strlen(value), outputBuffer);
+    
+    NSMutableString *outputString = [[NSMutableString alloc] initWithCapacity:CC_MD5_DIGEST_LENGTH * 2];
+    for(NSInteger count = 0; count < CC_MD5_DIGEST_LENGTH; count++){
+        [outputString appendFormat:@"%02x",outputBuffer[count]];
+    }
+    
+    return [outputString autorelease];
+}
+
+- (NSString*) uniqueDeviceIdentifier{
+    NSString *mac = [self getMac];
+    NSString *udid = [self MD5:mac];
+    return udid;
+}
+
+
 - (id)copyWithZone:(NSZone *)zone {
     return self;	
 }
@@ -536,13 +706,12 @@ static NSMutableArray *supportedOrientations = nil;
 - (unsigned)retainCount {
     return UINT_MAX;  //denotes an object that cannot be released
 }
-- (void)release {
+- (oneway void)release {
     //do nothing
 }
 - (id)autorelease {
     return self;	
 }
-
 
 
 @end

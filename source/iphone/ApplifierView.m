@@ -16,9 +16,6 @@
 
 #import "ApplifierView.h"
 
-#define BANNERHEIGHT 50
-#define BANNERWIDTH 310
-#define APPLIFIER_VIEW_TAG 10298305
 #define TRANSPARENT_BG_COLOR [UIColor clearColor]
 #define FULLSCREEN_BG_COLOR [UIColor grayColor]
 #define degreesToRadian(x) (M_PI * (x) / 180.0)
@@ -41,7 +38,6 @@
 
 - (void) detectRotationAndRotate {
     UIDeviceOrientation o = [UIDevice currentDevice].orientation;
-    NSLog(@"Current orientation %d", o);
     if ([self isSupportedOrientation:o] == NO) {
         o = [[supportedOrientations objectAtIndex:0] intValue];
     }
@@ -171,44 +167,43 @@
 
 
 - (CGRect) getRectForRotation:(UIDeviceOrientation)orientation usingRect:(CGRect)rect {
-    CGFloat newWidth = 0;
-    CGFloat newHeight = 0;
-    CGFloat newX = 0;
-	CGFloat newY = 0;
+    CGFloat newWidth;
+    CGFloat newHeight;
+    CGFloat newX;
+	CGFloat newY;
     
     CGRect screenBounds = [[UIScreen mainScreen] bounds];
-    CGRect originalFrame = rect;
+    CGRect wantedRect = rect;
     
     switch (orientation) {
         case UIDeviceOrientationPortrait: 
-            newX = originalFrame.origin.x;
-            newY = originalFrame.origin.y;
-            newWidth = originalFrame.size.width;
-            newHeight = originalFrame.size.height;
+            newX = wantedRect.origin.x;
+            newY = wantedRect.origin.y;
+            newWidth = wantedRect.size.width;
+            newHeight = wantedRect.size.height;
             break;
         case UIDeviceOrientationPortraitUpsideDown:
-            newX = screenBounds.size.width - originalFrame.origin.x;
-            newY = screenBounds.size.height - originalFrame.origin.y;
-            newWidth = -originalFrame.size.width;
-            newHeight = -originalFrame.size.height;
+            newX = screenBounds.size.width - (wantedRect.origin.x + wantedRect.size.width);
+            newY = screenBounds.size.height - (wantedRect.origin.y + wantedRect.size.height);
+            newWidth = wantedRect.size.width;
+            newHeight = wantedRect.size.height;
             break;
         case UIDeviceOrientationLandscapeLeft: //HomeButton on right
-            newX = screenBounds.size.width - originalFrame.origin.y;
-            newY = originalFrame.origin.x;
-            newWidth = -originalFrame.size.height;
-            newHeight = originalFrame.size.width;
+            newX = screenBounds.size.width - (wantedRect.origin.y + wantedRect.size.height);
+            newY = wantedRect.origin.x;
+            newWidth = wantedRect.size.height;
+            newHeight = wantedRect.size.width;
             break;
         case UIDeviceOrientationLandscapeRight: //HomeButton on left
-            newX = originalFrame.origin.y;
-            newY = screenBounds.size.height - originalFrame.origin.x;
-            newWidth = originalFrame.size.height;
-            newHeight = -originalFrame.size.width;
+            newX = wantedRect.origin.y;
+            newY = screenBounds.size.height - (wantedRect.origin.x + wantedRect.size.width);
+            newWidth = wantedRect.size.height;
+            newHeight = wantedRect.size.width;
             break;
         default: 
             break;
     }
     return CGRectMake(newX, newY, newWidth, newHeight);  
-    
 }
 
 - (CGRect) getBannerRect {
@@ -306,7 +301,7 @@
     requestedOrientation = toOrientation;
 
     float time = 0.2;
-    int angle = 0;
+    int angle;
     if (toOrientation == UIDeviceOrientationLandscapeLeft) {
         angle = 90;
     }

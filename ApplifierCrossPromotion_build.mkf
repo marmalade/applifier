@@ -49,8 +49,8 @@ if {{defined I3D_OS_IPHONE}}
         3rdparty/Facebook/ApplifierFBDialog.m
         3rdparty/Facebook/ApplifierFBLoginDialog.m
         3rdparty/Facebook/ApplifierFBRequest.m
-        3rdparty/SBJSON/ApplifierNSObjectSBJSON.m
-        3rdparty/SBJSON/ApplifierNSStringSBJSON.m
+        "3rdparty/SBJSON/ApplifierNSObject+SBJSON.m"
+        "3rdparty/SBJSON/ApplifierNSString+SBJSON.m"
         3rdparty/SBJSON/ApplifierSBJSON.m
         3rdparty/SBJSON/ApplifierSBJsonBase.m
         3rdparty/SBJSON/ApplifierSBJsonParser.m

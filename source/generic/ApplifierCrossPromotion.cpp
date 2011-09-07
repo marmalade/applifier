@@ -33,6 +33,11 @@ bool showBanner(int positionX, int positionY)
 	return showBanner_platform(positionX, positionY);
 }
 
+bool moveBanner(int x, int y)
+{
+	return moveBanner_platform(x, y);
+}
+
 bool hideBanner() 
 {
 	return hideBanner_platform();
