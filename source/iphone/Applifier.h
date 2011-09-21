@@ -14,7 +14,7 @@
  * limitations under the License.
  *
  *
- * Applifier iOS SDK Version 1.5.6.2
+ * Applifier iOS SDK Version 1.5.7
  *
  */
 
@@ -51,12 +51,14 @@ typedef enum {
     double scalingFactor;
     BOOL cancelBannerPopup;
     UIWindow *window;
+    BOOL bannerReady;
     BOOL interstitialReady;
     BOOL featuredGamesReady;
     BOOL gameRendererShouldPause;
 }
 
 + (Applifier*)initWithApplifierID:(NSString*)applifierID withWindow:(UIWindow*)window supportedOrientations:(UIDeviceOrientation)orientationsToSupport, ...NS_REQUIRES_NIL_TERMINATION;
++ (Applifier*)initWithApplifierID:(NSString*)applifierID withWindow:(UIWindow*)window delegate:(id<ApplifierGameDelegate>)applifierDelegate usingBanners:(BOOL)banners usingInterstitials:(BOOL)interstitials usingFeaturedGames:(BOOL)featuredGames supportedOrientations:(UIDeviceOrientation)orientationsToSupport, ...NS_REQUIRES_NIL_TERMINATION;
 + (Applifier*)initWithApplifierID:(NSString*)applifierID withWindow:(UIWindow*)window supportedOrientationsArray:(NSMutableArray*)orientationsArray;
 
 + (Applifier*)sharedInstance;
@@ -70,13 +72,16 @@ typedef enum {
 - (void) showFeaturedGames;
 - (void) showBannerAt:(CGPoint)position;
 - (BOOL) handleOpenURL:(NSURL *)url;
-
+- (CGSize) getBannerSize;
+- (NSString*) uniqueDeviceIdentifier;
+- (void) moveBanner:(CGPoint)to;
 
 @property (nonatomic, retain) UIWindow *window;
 @property (nonatomic, retain) ApplifierFacebook *facebook;
 @property (nonatomic, retain) id<ApplifierGameDelegate> gameDelegate;
 @property (nonatomic, retain) ApplifierView* applifierView;
 @property (assign) CGPoint targetPosition; //target position for banner
+@property (assign) BOOL bannerReady;
 @property (assign) BOOL interstitialReady;
 @property (assign) BOOL featuredGamesReady;
 @property (assign) BOOL gameRendererShouldPause;

@@ -46,6 +46,8 @@ s3eResult init_platform(const char* applifierID, bool orientationHomeButtonDown,
 
 bool showBanner_platform(int positionX, int positionY);
 
+bool moveBanner_platform(int x, int y);
+
 bool hideBanner_platform();
 
 bool prepareFeaturedGames_platform();

@@ -12,3 +12,4 @@ bool isInterstitialReady() false run_on_os_thread
 bool showFeaturedGames() false run_on_os_thread
 bool showInterstitial() false run_on_os_thread
 bool pauseRenderer() false run_on_os_thread
+bool moveBanner(int x, int y) false run_on_os_thread

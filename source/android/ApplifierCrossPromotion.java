@@ -42,8 +42,7 @@ class ApplifierCrossPromotion implements ApplifierViewListener
 	    }
     };
     
-    public boolean showBanner(int positionX, int positionY)
-    {
+    public boolean showBanner(int positionX, int positionY) {
     	if (applifier == null) return false;
     	FrameLayout.LayoutParams lparams = new FrameLayout.LayoutParams(RelativeLayout.LayoutParams.FILL_PARENT, RelativeLayout.LayoutParams.FILL_PARENT);
         lparams.leftMargin=positionX;
@@ -55,6 +54,23 @@ class ApplifierCrossPromotion implements ApplifierViewListener
         applifier.showBanner(lparams);
         return true;
     }
+
+    public boolean moveBanner(int x, int y) {
+    	if (applifier == null) return false;
+    	final FrameLayout.LayoutParams lparams = new FrameLayout.LayoutParams(RelativeLayout.LayoutParams.FILL_PARENT, RelativeLayout.LayoutParams.FILL_PARENT);
+        lparams.leftMargin=x;
+        lparams.topMargin=y;
+        lparams.gravity = Gravity.NO_GRAVITY;
+        applifier.setBannerLayoutParams(lparams);
+        LoaderActivity.m_Activity.runOnUiThread(new Runnable() {
+        	@Override
+        	public void run() {
+        		applifier.setLayoutParams(lparams);
+        	}
+        });
+    	return true;
+    }
+
     
     public boolean hideBanner() 
     {

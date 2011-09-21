@@ -81,6 +81,12 @@ static bool pauseRenderer_wrap()
     return (bool)(intptr_t)s3eEdkThreadRunOnOS((s3eEdkThreadFunc)pauseRenderer, 0);
 }
 
+static bool moveBanner_wrap(int x, int y)
+{
+    IwTrace(APPLIFIERCROSSPROMOTION_VERBOSE, ("calling ApplifierCrossPromotion func on main thread: moveBanner"));
+    return (bool)(intptr_t)s3eEdkThreadRunOnOS((s3eEdkThreadFunc)moveBanner, 2, x, y);
+}
+
 #define init init_wrap
 #define showBanner showBanner_wrap
 #define hideBanner hideBanner_wrap
@@ -91,13 +97,14 @@ static bool pauseRenderer_wrap()
 #define showFeaturedGames showFeaturedGames_wrap
 #define showInterstitial showInterstitial_wrap
 #define pauseRenderer pauseRenderer_wrap
+#define moveBanner moveBanner_wrap
 
 #endif /* I3D_OS_IPHONE */
 
 void ApplifierCrossPromotionRegisterExt()
 {
     /* fill in the function pointer struct for this extension */
-    void* funcPtrs[10];
+    void* funcPtrs[11];
     funcPtrs[0] = (void*)init;
     funcPtrs[1] = (void*)showBanner;
     funcPtrs[2] = (void*)hideBanner;
@@ -108,11 +115,12 @@ void ApplifierCrossPromotionRegisterExt()
     funcPtrs[7] = (void*)showFeaturedGames;
     funcPtrs[8] = (void*)showInterstitial;
     funcPtrs[9] = (void*)pauseRenderer;
+    funcPtrs[10] = (void*)moveBanner;
 
     /*
      * Flags that specify the extension's use of locking and stackswitching
      */
-    int flags[10] = { 0 };
+    int flags[11] = { 0 };
 
     /*
      * Register the extension

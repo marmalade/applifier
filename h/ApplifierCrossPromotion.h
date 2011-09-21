@@ -45,6 +45,8 @@ bool showInterstitial();
 
 bool pauseRenderer();
 
+bool moveBanner(int x, int y);
+
 S3E_END_C_DECL
 
 #endif /* !S3E_EXT_APPLIFIERCROSSPROMOTION_H */

@@ -21,6 +21,7 @@ typedef       bool(*isInterstitialReady_t)();
 typedef       bool(*showFeaturedGames_t)();
 typedef       bool(*showInterstitial_t)();
 typedef       bool(*pauseRenderer_t)();
+typedef       bool(*moveBanner_t)(int x, int y);
 
 /**
  * struct that gets filled in by ApplifierCrossPromotionRegister
@@ -37,6 +38,7 @@ typedef struct ApplifierCrossPromotionFuncs
     showFeaturedGames_t m_showFeaturedGames;
     showInterstitial_t m_showInterstitial;
     pauseRenderer_t m_pauseRenderer;
+    moveBanner_t m_moveBanner;
 } ApplifierCrossPromotionFuncs;
 
 static ApplifierCrossPromotionFuncs g_Ext;
@@ -179,4 +181,14 @@ bool pauseRenderer()
         return false;
 
     return g_Ext.m_pauseRenderer();
+}
+
+bool moveBanner(int x, int y)
+{
+    IwTrace(APPLIFIERCROSSPROMOTION_VERBOSE, ("calling ApplifierCrossPromotion[10] func: moveBanner"));
+
+    if (!_extLoad())
+        return false;
+
+    return g_Ext.m_moveBanner(x, y);
 }
