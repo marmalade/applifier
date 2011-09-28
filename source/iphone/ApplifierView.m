@@ -104,8 +104,6 @@
         webView.autoresizingMask = UIViewAutoresizingNone;
         
         [self setBackgroundColor:FULLSCREEN_BG_COLOR];
-        [webView setOpaque:YES];
-        
         
         CGRect screenBounds = [[UIScreen mainScreen] bounds];
 

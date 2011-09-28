@@ -298,8 +298,8 @@ static NSString* kSDKVersion = @"2";
     return NO;
   }
 
+	
   NSString *query = [url fragment];
-
   // Version 3.2.3 of the Facebook app encodes the parameters in the query but
   // version 3.3 and above encode the parameters in the fragment. To support
   // both versions of the Facebook app, we try to parse the query if
@@ -350,7 +350,9 @@ static NSString* kSDKVersion = @"2";
     }
   }
 
+  
   [self fbDialogLogin:accessToken expirationDate:expirationDate];
+	
   return YES;
 }
 
