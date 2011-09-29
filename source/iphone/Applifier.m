@@ -282,6 +282,7 @@ static NSMutableArray *supportedOrientations = nil;
  */
 - (void)fbDidLogin {
     [self sendCommand:@"facebookLoginSuccess" withParameter:facebook.accessToken];
+    [self sendCommand:@"facebookTokenExpires" withParameter:[NSString stringWithFormat:@"%llu", (long long)floor([facebook.expirationDate timeIntervalSince1970]*1000)]];
 }
      
     /**
@@ -382,6 +383,11 @@ static NSMutableArray *supportedOrientations = nil;
         else if ([command isEqualToString:@"log"]) {
             NSLog(@"Javascript: %@", [json objectForKey:@"message"]);
         }
+        else if ([command isEqualToString:@"openExternalLink"]) {
+            [self hideView];
+            NSURL *urlToOpen = [NSURL URLWithString:[json objectForKey:@"url"]];
+            [[UIApplication sharedApplication] openURL:urlToOpen];
+        }
         [applifierView evaluateJavascriptOnWebView:@"applifier.callNativeComplete();"];
 
         return NO;
@@ -393,8 +399,6 @@ static NSMutableArray *supportedOrientations = nil;
             NSURLConnection* conn = [[NSURLConnection alloc] initWithRequest:[NSURLRequest requestWithURL:[request URL]] delegate:self startImmediately:YES];
             [conn release];    
          
-            //[self hideView];
-            //[[UIApplication sharedApplication] openURL:[request URL]];
             
             return NO;
         }

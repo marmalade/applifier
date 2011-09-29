@@ -7,8 +7,10 @@
  * be overwritten (unless --force is specified) and is intended to be modified.
  */
 #include "ApplifierCrossPromotion_internal.h"
+#include "IwDebug.h"
 #import "Applifier.h"
 #import "s3eDevice.h"
+#import "s3eEdk.h"
 
 @interface ApplifierDelegateWrapper : NSObject<ApplifierGameDelegate> {
 	
@@ -35,6 +37,12 @@ s3eResult ApplifierCrossPromotionInit_platform()
 {
     // Add any platform-specific initialisation code here
     return S3E_RESULT_SUCCESS;
+}
+
+int32 openURLCallback(void* systemData, void* userData) {
+	NSURL *url = (NSURL *)systemData;
+	[[Applifier sharedInstance] handleOpenURL:url];
+	return 0;
 }
 
 void ApplifierCrossPromotionTerminate_platform()
@@ -66,11 +74,20 @@ s3eResult init_platform(const char* applifierId, bool orientationHomeButtonDown,
 	[Applifier sharedInstance].gameDelegate = wrapper;
 	[wrapper release];
 	 
-	
 	[array release];
-
+	
+	s3eEdkCallbacksRegister(S3E_EDK_INTERNAL, 
+									S3E_EDK_CALLBACK_MAX, 
+									S3E_EDK_IPHONE_HANDLEOPENURL, 
+									openURLCallback, 
+									0,
+									false
+									);
+	
+	
     return S3E_RESULT_SUCCESS;
 }
+
 
 
 bool showBanner_platform(int positionX, int positionY) {
