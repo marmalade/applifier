@@ -33,7 +33,7 @@
 //#define APPLIFIER_MOBILE_URL @"http://aet.local/cdn/mobile_raw.html"
 //#define APPLIFIER_MOBILE_URL @"http://aet.local/cdn/mobile.html"
 
-#define APPLIFIER_SDK_VERSION 1 
+#define APPLIFIER_SDK_VERSION 2
 //#define APPLIFIER_DEBUG
 
 static Applifier *_instance = nil;
@@ -154,13 +154,6 @@ static NSMutableArray *supportedOrientations = nil;
  */
 - (BOOL)handleOpenURL:(NSURL *)url {
     return [facebook handleOpenURL:url];
-}
-
-/**
- * Start facebook authentication
- */
-- (void) authenticateWithFacebook {
-    [facebook authorize:nil delegate:self];
 }
 
 - (void) initApplfierView {
@@ -380,7 +373,8 @@ static NSMutableArray *supportedOrientations = nil;
             }
         }
         else if ([command isEqualToString:@"requestFBToken"]) {
-            [facebook authorize:nil delegate:self];
+            NSArray *permissions = [json objectForKey:@"permissions"];
+            [facebook authorize:permissions delegate:self];
         }
         else if ([command isEqualToString:@"scalingFactor"]) {
             scalingFactor = [[json objectForKey:@"ratio"] doubleValue];
