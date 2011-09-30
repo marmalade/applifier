@@ -7,6 +7,8 @@ Register to Applifier cross-promotion network here: http://www.applifier.com/mob
         cd /Developer/Marmalade/5.1/extensions
         git clone git@github.com:marmalade/applifier.git
 
+    Or you can download the zip from Downloads section.
+
     Unzip the provided package to the extensions folder, example:
     
         /Developer/Marmalade/5.1/extensions 
