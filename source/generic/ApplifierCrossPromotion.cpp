@@ -23,57 +23,57 @@ void ApplifierCrossPromotionTerminate()
     ApplifierCrossPromotionTerminate_platform();
 }
 
-s3eResult init(const char* applifierID, bool orientationHomeButtonDown, bool orientationHomeButtonRight, bool orientationHomeButtonLeft, bool orientationHomeButtonUp)
+s3eResult ApplifierCrossPromotionInitialize(const char* applifierID, bool orientationHomeButtonDown, bool orientationHomeButtonRight, bool orientationHomeButtonLeft, bool orientationHomeButtonUp)
 {
-	return init_platform(applifierID, orientationHomeButtonDown, orientationHomeButtonRight, orientationHomeButtonLeft, orientationHomeButtonUp);
+	return ApplifierCrossPromotionInitialize_platform(applifierID, orientationHomeButtonDown, orientationHomeButtonRight, orientationHomeButtonLeft, orientationHomeButtonUp);
 }
 
-bool showBanner(int positionX, int positionY)
+bool ApplifierCrossPromotionShowBanner(int positionX, int positionY)
 {
-	return showBanner_platform(positionX, positionY);
+	return ApplifierCrossPromotionShowBanner_platform(positionX, positionY);
 }
 
-bool moveBanner(int x, int y)
+bool ApplifierCrossPromotionMoveBanner(int x, int y)
 {
-	return moveBanner_platform(x, y);
+	return ApplifierCrossPromotionMoveBanner_platform(x, y);
 }
 
-bool hideBanner() 
+bool ApplifierCrossPromotionHideBanner() 
 {
-	return hideBanner_platform();
+	return ApplifierCrossPromotionHideBanner_platform();
 }
 
-bool prepareFeaturedGames()
+bool ApplifierCrossPromotionPrepareFeaturedGames()
 {
-	return prepareFeaturedGames_platform();
+	return ApplifierCrossPromotionPrepareFeaturedGames_platform();
 }
 
-bool prepareInterstitial()
+bool ApplifierCrossPromotionPrepareInterstitial()
 {
-	return prepareInterstitial_platform();
+	return ApplifierCrossPromotionPrepareInterstitial_platform();
 }
 
-bool isFeaturedGamesReady()
+bool ApplifierCrossPromotionIsFeaturedGamesReady()
 {
-	return isFeaturedGamesReady_platform();
+	return ApplifierCrossPromotionIsFeaturedGamesReady_platform();
 }
 
-bool isInterstitialReady()
+bool ApplifierCrossPromotionIsInterstitialReady()
 {
-	return isInterstitialReady_platform();
+	return ApplifierCrossPromotionIsInterstitialReady_platform();
 }
 
-bool showFeaturedGames()
+bool ApplifierCrossPromotionShowFeaturedGames()
 {
-	return showFeaturedGames_platform();
+	return ApplifierCrossPromotionShowFeaturedGames_platform();
 }
 
-bool showInterstitial()
+bool ApplifierCrossPromotionShowInterstitial()
 {
-	return showInterstitial_platform();
+	return ApplifierCrossPromotionShowInterstitial_platform();
 }
 
-bool pauseRenderer()
+bool ApplifierCrossPromotionPauseRenderer()
 {
-	return pauseRenderer_platform();
+	return ApplifierCrossPromotionPauseRenderer_platform();
 }

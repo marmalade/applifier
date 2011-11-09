@@ -42,27 +42,26 @@ void ApplifierCrossPromotionTerminate();
  * Platform-specific termination, implemented on each platform
  */
 void ApplifierCrossPromotionTerminate_platform();
-s3eResult init_platform(const char* applifierID, bool orientationHomeButtonDown, bool orientationHomeButtonRight, bool orientationHomeButtonLeft, bool orientationHomeButtonUp);
+s3eResult ApplifierCrossPromotionInitialize_platform(const char* applifierID, bool orientationHomeButtonDown, bool orientationHomeButtonRight, bool orientationHomeButtonLeft, bool orientationHomeButtonUp);
 
-bool showBanner_platform(int positionX, int positionY);
+bool ApplifierCrossPromotionShowBanner_platform(int positionX, int positionY);
 
-bool moveBanner_platform(int x, int y);
+bool ApplifierCrossPromotionMoveBanner_platform(int x, int y);
 
-bool hideBanner_platform();
+bool ApplifierCrossPromotionHideBanner_platform();
 
-bool prepareFeaturedGames_platform();
+bool ApplifierCrossPromotionPrepareFeaturedGames_platform();
 
-bool prepareInterstitial_platform();
+bool ApplifierCrossPromotionPrepareInterstitial_platform();
 
-bool isFeaturedGamesReady_platform();
+bool ApplifierCrossPromotionIsFeaturedGamesReady_platform();
 
-bool isInterstitialReady_platform();
+bool ApplifierCrossPromotionIsInterstitialReady_platform();
 
-bool showFeaturedGames_platform();
+bool ApplifierCrossPromotionShowFeaturedGames_platform();
 
-bool showInterstitial_platform();
+bool ApplifierCrossPromotionShowInterstitial_platform();
 
-bool pauseRenderer_platform();
-
+bool ApplifierCrossPromotionPauseRenderer_platform();
 
 #endif /* APPLIFIERCROSSPROMOTION_H_INTERNAL */

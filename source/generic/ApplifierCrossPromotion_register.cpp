@@ -21,83 +21,83 @@ extern void ApplifierCrossPromotionTerminate();
 
 #if defined I3D_OS_IPHONE || defined I3D_OS_OSX
 
-static s3eResult init_wrap(const char* applifierID, bool orientationHomeButtonDown, bool orientationHomeButtonRight, bool orientationHomeButtonLeft, bool orientationHomeButtonUp)
+static s3eResult ApplifierCrossPromotionInitialize_wrap(const char* applifierID, bool orientationHomeButtonDown, bool orientationHomeButtonRight, bool orientationHomeButtonLeft, bool orientationHomeButtonUp)
 {
-    IwTrace(APPLIFIERCROSSPROMOTION_VERBOSE, ("calling ApplifierCrossPromotion func on main thread: init"));
-    return (s3eResult)(intptr_t)s3eEdkThreadRunOnOS((s3eEdkThreadFunc)init, 5, applifierID, orientationHomeButtonDown, orientationHomeButtonRight, orientationHomeButtonLeft, orientationHomeButtonUp);
+    IwTrace(APPLIFIERCROSSPROMOTION_VERBOSE, ("calling ApplifierCrossPromotion func on main thread: ApplifierCrossPromotionInitialize"));
+    return (s3eResult)(intptr_t)s3eEdkThreadRunOnOS((s3eEdkThreadFunc)ApplifierCrossPromotionInitialize, 5, applifierID, orientationHomeButtonDown, orientationHomeButtonRight, orientationHomeButtonLeft, orientationHomeButtonUp);
 }
 
-static bool showBanner_wrap(int positionX, int positionY)
+static bool ApplifierCrossPromotionShowBanner_wrap(int positionX, int positionY)
 {
-    IwTrace(APPLIFIERCROSSPROMOTION_VERBOSE, ("calling ApplifierCrossPromotion func on main thread: showBanner"));
-    return (bool)(intptr_t)s3eEdkThreadRunOnOS((s3eEdkThreadFunc)showBanner, 2, positionX, positionY);
+    IwTrace(APPLIFIERCROSSPROMOTION_VERBOSE, ("calling ApplifierCrossPromotion func on main thread: ApplifierCrossPromotionShowBanner"));
+    return (bool)(intptr_t)s3eEdkThreadRunOnOS((s3eEdkThreadFunc)ApplifierCrossPromotionShowBanner, 2, positionX, positionY);
 }
 
-static bool hideBanner_wrap()
+static bool ApplifierCrossPromotionHideBanner_wrap()
 {
-    IwTrace(APPLIFIERCROSSPROMOTION_VERBOSE, ("calling ApplifierCrossPromotion func on main thread: hideBanner"));
-    return (bool)(intptr_t)s3eEdkThreadRunOnOS((s3eEdkThreadFunc)hideBanner, 0);
+    IwTrace(APPLIFIERCROSSPROMOTION_VERBOSE, ("calling ApplifierCrossPromotion func on main thread: ApplifierCrossPromotionHideBanner"));
+    return (bool)(intptr_t)s3eEdkThreadRunOnOS((s3eEdkThreadFunc)ApplifierCrossPromotionHideBanner, 0);
 }
 
-static bool prepareFeaturedGames_wrap()
+static bool ApplifierCrossPromotionPrepareFeaturedGames_wrap()
 {
-    IwTrace(APPLIFIERCROSSPROMOTION_VERBOSE, ("calling ApplifierCrossPromotion func on main thread: prepareFeaturedGames"));
-    return (bool)(intptr_t)s3eEdkThreadRunOnOS((s3eEdkThreadFunc)prepareFeaturedGames, 0);
+    IwTrace(APPLIFIERCROSSPROMOTION_VERBOSE, ("calling ApplifierCrossPromotion func on main thread: ApplifierCrossPromotionPrepareFeaturedGames"));
+    return (bool)(intptr_t)s3eEdkThreadRunOnOS((s3eEdkThreadFunc)ApplifierCrossPromotionPrepareFeaturedGames, 0);
 }
 
-static bool prepareInterstitial_wrap()
+static bool ApplifierCrossPromotionPrepareInterstitial_wrap()
 {
-    IwTrace(APPLIFIERCROSSPROMOTION_VERBOSE, ("calling ApplifierCrossPromotion func on main thread: prepareInterstitial"));
-    return (bool)(intptr_t)s3eEdkThreadRunOnOS((s3eEdkThreadFunc)prepareInterstitial, 0);
+    IwTrace(APPLIFIERCROSSPROMOTION_VERBOSE, ("calling ApplifierCrossPromotion func on main thread: ApplifierCrossPromotionPrepareInterstitial"));
+    return (bool)(intptr_t)s3eEdkThreadRunOnOS((s3eEdkThreadFunc)ApplifierCrossPromotionPrepareInterstitial, 0);
 }
 
-static bool isFeaturedGamesReady_wrap()
+static bool ApplifierCrossPromotionIsFeaturedGamesReady_wrap()
 {
-    IwTrace(APPLIFIERCROSSPROMOTION_VERBOSE, ("calling ApplifierCrossPromotion func on main thread: isFeaturedGamesReady"));
-    return (bool)(intptr_t)s3eEdkThreadRunOnOS((s3eEdkThreadFunc)isFeaturedGamesReady, 0);
+    IwTrace(APPLIFIERCROSSPROMOTION_VERBOSE, ("calling ApplifierCrossPromotion func on main thread: ApplifierCrossPromotionIsFeaturedGamesReady"));
+    return (bool)(intptr_t)s3eEdkThreadRunOnOS((s3eEdkThreadFunc)ApplifierCrossPromotionIsFeaturedGamesReady, 0);
 }
 
-static bool isInterstitialReady_wrap()
+static bool ApplifierCrossPromotionIsInterstitialReady_wrap()
 {
-    IwTrace(APPLIFIERCROSSPROMOTION_VERBOSE, ("calling ApplifierCrossPromotion func on main thread: isInterstitialReady"));
-    return (bool)(intptr_t)s3eEdkThreadRunOnOS((s3eEdkThreadFunc)isInterstitialReady, 0);
+    IwTrace(APPLIFIERCROSSPROMOTION_VERBOSE, ("calling ApplifierCrossPromotion func on main thread: ApplifierCrossPromotionIsInterstitialReady"));
+    return (bool)(intptr_t)s3eEdkThreadRunOnOS((s3eEdkThreadFunc)ApplifierCrossPromotionIsInterstitialReady, 0);
 }
 
-static bool showFeaturedGames_wrap()
+static bool ApplifierCrossPromotionShowFeaturedGames_wrap()
 {
-    IwTrace(APPLIFIERCROSSPROMOTION_VERBOSE, ("calling ApplifierCrossPromotion func on main thread: showFeaturedGames"));
-    return (bool)(intptr_t)s3eEdkThreadRunOnOS((s3eEdkThreadFunc)showFeaturedGames, 0);
+    IwTrace(APPLIFIERCROSSPROMOTION_VERBOSE, ("calling ApplifierCrossPromotion func on main thread: ApplifierCrossPromotionShowFeaturedGames"));
+    return (bool)(intptr_t)s3eEdkThreadRunOnOS((s3eEdkThreadFunc)ApplifierCrossPromotionShowFeaturedGames, 0);
 }
 
-static bool showInterstitial_wrap()
+static bool ApplifierCrossPromotionShowInterstitial_wrap()
 {
-    IwTrace(APPLIFIERCROSSPROMOTION_VERBOSE, ("calling ApplifierCrossPromotion func on main thread: showInterstitial"));
-    return (bool)(intptr_t)s3eEdkThreadRunOnOS((s3eEdkThreadFunc)showInterstitial, 0);
+    IwTrace(APPLIFIERCROSSPROMOTION_VERBOSE, ("calling ApplifierCrossPromotion func on main thread: ApplifierCrossPromotionShowInterstitial"));
+    return (bool)(intptr_t)s3eEdkThreadRunOnOS((s3eEdkThreadFunc)ApplifierCrossPromotionShowInterstitial, 0);
 }
 
-static bool pauseRenderer_wrap()
+static bool ApplifierCrossPromotionPauseRenderer_wrap()
 {
-    IwTrace(APPLIFIERCROSSPROMOTION_VERBOSE, ("calling ApplifierCrossPromotion func on main thread: pauseRenderer"));
-    return (bool)(intptr_t)s3eEdkThreadRunOnOS((s3eEdkThreadFunc)pauseRenderer, 0);
+    IwTrace(APPLIFIERCROSSPROMOTION_VERBOSE, ("calling ApplifierCrossPromotion func on main thread: ApplifierCrossPromotionPauseRenderer"));
+    return (bool)(intptr_t)s3eEdkThreadRunOnOS((s3eEdkThreadFunc)ApplifierCrossPromotionPauseRenderer, 0);
 }
 
-static bool moveBanner_wrap(int x, int y)
+static bool ApplifierCrossPromotionMoveBanner_wrap(int x, int y)
 {
-    IwTrace(APPLIFIERCROSSPROMOTION_VERBOSE, ("calling ApplifierCrossPromotion func on main thread: moveBanner"));
-    return (bool)(intptr_t)s3eEdkThreadRunOnOS((s3eEdkThreadFunc)moveBanner, 2, x, y);
+    IwTrace(APPLIFIERCROSSPROMOTION_VERBOSE, ("calling ApplifierCrossPromotion func on main thread: ApplifierCrossPromotionMoveBanner"));
+    return (bool)(intptr_t)s3eEdkThreadRunOnOS((s3eEdkThreadFunc)ApplifierCrossPromotionMoveBanner, 2, x, y);
 }
 
-#define init init_wrap
-#define showBanner showBanner_wrap
-#define hideBanner hideBanner_wrap
-#define prepareFeaturedGames prepareFeaturedGames_wrap
-#define prepareInterstitial prepareInterstitial_wrap
-#define isFeaturedGamesReady isFeaturedGamesReady_wrap
-#define isInterstitialReady isInterstitialReady_wrap
-#define showFeaturedGames showFeaturedGames_wrap
-#define showInterstitial showInterstitial_wrap
-#define pauseRenderer pauseRenderer_wrap
-#define moveBanner moveBanner_wrap
+#define ApplifierCrossPromotionInitialize ApplifierCrossPromotionInitialize_wrap
+#define ApplifierCrossPromotionShowBanner ApplifierCrossPromotionShowBanner_wrap
+#define ApplifierCrossPromotionHideBanner ApplifierCrossPromotionHideBanner_wrap
+#define ApplifierCrossPromotionPrepareFeaturedGames ApplifierCrossPromotionPrepareFeaturedGames_wrap
+#define ApplifierCrossPromotionPrepareInterstitial ApplifierCrossPromotionPrepareInterstitial_wrap
+#define ApplifierCrossPromotionIsFeaturedGamesReady ApplifierCrossPromotionIsFeaturedGamesReady_wrap
+#define ApplifierCrossPromotionIsInterstitialReady ApplifierCrossPromotionIsInterstitialReady_wrap
+#define ApplifierCrossPromotionShowFeaturedGames ApplifierCrossPromotionShowFeaturedGames_wrap
+#define ApplifierCrossPromotionShowInterstitial ApplifierCrossPromotionShowInterstitial_wrap
+#define ApplifierCrossPromotionPauseRenderer ApplifierCrossPromotionPauseRenderer_wrap
+#define ApplifierCrossPromotionMoveBanner ApplifierCrossPromotionMoveBanner_wrap
 
 #endif /* I3D_OS_IPHONE */
 
@@ -105,17 +105,17 @@ void ApplifierCrossPromotionRegisterExt()
 {
     /* fill in the function pointer struct for this extension */
     void* funcPtrs[11];
-    funcPtrs[0] = (void*)init;
-    funcPtrs[1] = (void*)showBanner;
-    funcPtrs[2] = (void*)hideBanner;
-    funcPtrs[3] = (void*)prepareFeaturedGames;
-    funcPtrs[4] = (void*)prepareInterstitial;
-    funcPtrs[5] = (void*)isFeaturedGamesReady;
-    funcPtrs[6] = (void*)isInterstitialReady;
-    funcPtrs[7] = (void*)showFeaturedGames;
-    funcPtrs[8] = (void*)showInterstitial;
-    funcPtrs[9] = (void*)pauseRenderer;
-    funcPtrs[10] = (void*)moveBanner;
+    funcPtrs[0] = (void*)ApplifierCrossPromotionInitialize;
+    funcPtrs[1] = (void*)ApplifierCrossPromotionShowBanner;
+    funcPtrs[2] = (void*)ApplifierCrossPromotionHideBanner;
+    funcPtrs[3] = (void*)ApplifierCrossPromotionPrepareFeaturedGames;
+    funcPtrs[4] = (void*)ApplifierCrossPromotionPrepareInterstitial;
+    funcPtrs[5] = (void*)ApplifierCrossPromotionIsFeaturedGamesReady;
+    funcPtrs[6] = (void*)ApplifierCrossPromotionIsInterstitialReady;
+    funcPtrs[7] = (void*)ApplifierCrossPromotionShowFeaturedGames;
+    funcPtrs[8] = (void*)ApplifierCrossPromotionShowInterstitial;
+    funcPtrs[9] = (void*)ApplifierCrossPromotionPauseRenderer;
+    funcPtrs[10] = (void*)ApplifierCrossPromotionMoveBanner;
 
     /*
      * Flags that specify the extension's use of locking and stackswitching

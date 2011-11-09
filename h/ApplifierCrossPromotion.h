@@ -25,27 +25,27 @@ S3E_BEGIN_C_DECL
  */
 s3eBool ApplifierCrossPromotionAvailable();
 
-s3eResult init(const char* applifierID, bool orientationHomeButtonDown, bool orientationHomeButtonRight, bool orientationHomeButtonLeft, bool orientationHomeButtonUp);
+s3eResult ApplifierCrossPromotionInitialize(const char* applifierID, bool orientationHomeButtonDown, bool orientationHomeButtonRight, bool orientationHomeButtonLeft, bool orientationHomeButtonUp);
 
-bool showBanner(int positionX, int positionY);
+bool ApplifierCrossPromotionShowBanner(int positionX, int positionY);
 
-bool hideBanner();
+bool ApplifierCrossPromotionHideBanner();
 
-bool prepareFeaturedGames();
+bool ApplifierCrossPromotionPrepareFeaturedGames();
 
-bool prepareInterstitial();
+bool ApplifierCrossPromotionPrepareInterstitial();
 
-bool isFeaturedGamesReady();
+bool ApplifierCrossPromotionIsFeaturedGamesReady();
 
-bool isInterstitialReady();
+bool ApplifierCrossPromotionIsInterstitialReady();
 
-bool showFeaturedGames();
+bool ApplifierCrossPromotionShowFeaturedGames();
 
-bool showInterstitial();
+bool ApplifierCrossPromotionShowInterstitial();
 
-bool pauseRenderer();
+bool ApplifierCrossPromotionPauseRenderer();
 
-bool moveBanner(int x, int y);
+bool ApplifierCrossPromotionMoveBanner(int x, int y);
 
 S3E_END_C_DECL
 

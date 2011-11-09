@@ -50,7 +50,7 @@ void ApplifierCrossPromotionTerminate_platform()
 	[[Applifier sharedInstance] releaseResources];
 }
 
-s3eResult init_platform(const char* applifierId, bool orientationHomeButtonDown, bool orientationHomeButtonRight, bool orientationHomeButtonLeft, bool orientationHomeButtonUp) {
+s3eResult ApplifierCrossPromotionInitialize_platform(const char* applifierId, bool orientationHomeButtonDown, bool orientationHomeButtonRight, bool orientationHomeButtonLeft, bool orientationHomeButtonUp) {
 	NSString *af_id = [NSString stringWithUTF8String:applifierId];
 	UIWindow *window = [[[UIApplication sharedApplication] windows] objectAtIndex:0]; 	
 	
@@ -90,41 +90,41 @@ s3eResult init_platform(const char* applifierId, bool orientationHomeButtonDown,
 
 
 
-bool showBanner_platform(int positionX, int positionY) {
+bool ApplifierCrossPromotionShowBanner_platform(int positionX, int positionY) {
 	[[Applifier sharedInstance] showBannerAt:CGPointMake(positionX, positionY)];	
     return true;
 }
 
-bool moveBanner_platform(int x, int y) {
+bool ApplifierCrossPromotionMoveBanner_platform(int x, int y) {
 	[[Applifier sharedInstance] moveBanner:CGPointMake(x, y)];	
     return true;
 }
 
-bool hideBanner_platform() {
+bool ApplifierCrossPromotionHideBanner_platform() {
 	[[Applifier sharedInstance] hideView];	
     return true;
 }
 
-bool prepareFeaturedGames_platform() {
+bool ApplifierCrossPromotionPrepareFeaturedGames_platform() {
 	[[Applifier sharedInstance] prepareFeaturedGames];	
     return true;
 }
 
-bool prepareInterstitial_platform() {
+bool ApplifierCrossPromotionPrepareInterstitial_platform() {
 	[[Applifier sharedInstance] prepareInterstitial];	
     return true;
 }
 
-bool isFeaturedGamesReady_platform() {
+bool ApplifierCrossPromotionIsFeaturedGamesReady_platform() {
 	return [Applifier sharedInstance].featuredGamesReady;
 }
 
-bool isInterstitialReady_platform() {
+bool ApplifierCrossPromotionIsInterstitialReady_platform() {
 	return [Applifier sharedInstance].interstitialReady;
 }
 
 
-bool showFeaturedGames_platform() {
+bool ApplifierCrossPromotionShowFeaturedGames_platform() {
 	if ([Applifier sharedInstance].featuredGamesReady) {
 		[[Applifier sharedInstance] showFeaturedGames];	
 		return true;
@@ -134,7 +134,7 @@ bool showFeaturedGames_platform() {
 	}
 }
 
-bool showInterstitial_platform() {
+bool ApplifierCrossPromotionShowInterstitial_platform() {
 	if ([Applifier sharedInstance].interstitialReady) {
 		[[Applifier sharedInstance] showInterstitial];
 		return true;
@@ -145,6 +145,6 @@ bool showInterstitial_platform() {
 	}
 }
 
-bool pauseRenderer_platform() {
+bool ApplifierCrossPromotionPauseRenderer_platform() {
 	return [Applifier sharedInstance].gameRendererShouldPause;
 }

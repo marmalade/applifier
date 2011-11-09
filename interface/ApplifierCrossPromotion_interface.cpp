@@ -11,34 +11,34 @@
 /**
  * Definitions for functions types passed to/from s3eExt interface
  */
-typedef  s3eResult(*init_t)(const char* applifierID, bool orientationHomeButtonDown, bool orientationHomeButtonRight, bool orientationHomeButtonLeft, bool orientationHomeButtonUp);
-typedef       bool(*showBanner_t)(int positionX, int positionY);
-typedef       bool(*hideBanner_t)();
-typedef       bool(*prepareFeaturedGames_t)();
-typedef       bool(*prepareInterstitial_t)();
-typedef       bool(*isFeaturedGamesReady_t)();
-typedef       bool(*isInterstitialReady_t)();
-typedef       bool(*showFeaturedGames_t)();
-typedef       bool(*showInterstitial_t)();
-typedef       bool(*pauseRenderer_t)();
-typedef       bool(*moveBanner_t)(int x, int y);
+typedef  s3eResult(*ApplifierCrossPromotionInitialize_t)(const char* applifierID, bool orientationHomeButtonDown, bool orientationHomeButtonRight, bool orientationHomeButtonLeft, bool orientationHomeButtonUp);
+typedef       bool(*ApplifierCrossPromotionShowBanner_t)(int positionX, int positionY);
+typedef       bool(*ApplifierCrossPromotionHideBanner_t)();
+typedef       bool(*ApplifierCrossPromotionPrepareFeaturedGames_t)();
+typedef       bool(*ApplifierCrossPromotionPrepareInterstitial_t)();
+typedef       bool(*ApplifierCrossPromotionIsFeaturedGamesReady_t)();
+typedef       bool(*ApplifierCrossPromotionIsInterstitialReady_t)();
+typedef       bool(*ApplifierCrossPromotionShowFeaturedGames_t)();
+typedef       bool(*ApplifierCrossPromotionShowInterstitial_t)();
+typedef       bool(*ApplifierCrossPromotionPauseRenderer_t)();
+typedef       bool(*ApplifierCrossPromotionMoveBanner_t)(int x, int y);
 
 /**
  * struct that gets filled in by ApplifierCrossPromotionRegister
  */
 typedef struct ApplifierCrossPromotionFuncs
 {
-    init_t m_init;
-    showBanner_t m_showBanner;
-    hideBanner_t m_hideBanner;
-    prepareFeaturedGames_t m_prepareFeaturedGames;
-    prepareInterstitial_t m_prepareInterstitial;
-    isFeaturedGamesReady_t m_isFeaturedGamesReady;
-    isInterstitialReady_t m_isInterstitialReady;
-    showFeaturedGames_t m_showFeaturedGames;
-    showInterstitial_t m_showInterstitial;
-    pauseRenderer_t m_pauseRenderer;
-    moveBanner_t m_moveBanner;
+    ApplifierCrossPromotionInitialize_t m_ApplifierCrossPromotionInitialize;
+    ApplifierCrossPromotionShowBanner_t m_ApplifierCrossPromotionShowBanner;
+    ApplifierCrossPromotionHideBanner_t m_ApplifierCrossPromotionHideBanner;
+    ApplifierCrossPromotionPrepareFeaturedGames_t m_ApplifierCrossPromotionPrepareFeaturedGames;
+    ApplifierCrossPromotionPrepareInterstitial_t m_ApplifierCrossPromotionPrepareInterstitial;
+    ApplifierCrossPromotionIsFeaturedGamesReady_t m_ApplifierCrossPromotionIsFeaturedGamesReady;
+    ApplifierCrossPromotionIsInterstitialReady_t m_ApplifierCrossPromotionIsInterstitialReady;
+    ApplifierCrossPromotionShowFeaturedGames_t m_ApplifierCrossPromotionShowFeaturedGames;
+    ApplifierCrossPromotionShowInterstitial_t m_ApplifierCrossPromotionShowInterstitial;
+    ApplifierCrossPromotionPauseRenderer_t m_ApplifierCrossPromotionPauseRenderer;
+    ApplifierCrossPromotionMoveBanner_t m_ApplifierCrossPromotionMoveBanner;
 } ApplifierCrossPromotionFuncs;
 
 static ApplifierCrossPromotionFuncs g_Ext;
@@ -83,112 +83,112 @@ s3eBool ApplifierCrossPromotionAvailable()
     return g_GotExt ? S3E_TRUE : S3E_FALSE;
 }
 
-s3eResult init(const char* applifierID, bool orientationHomeButtonDown, bool orientationHomeButtonRight, bool orientationHomeButtonLeft, bool orientationHomeButtonUp)
+s3eResult ApplifierCrossPromotionInitialize(const char* applifierID, bool orientationHomeButtonDown, bool orientationHomeButtonRight, bool orientationHomeButtonLeft, bool orientationHomeButtonUp)
 {
-    IwTrace(APPLIFIERCROSSPROMOTION_VERBOSE, ("calling ApplifierCrossPromotion[0] func: init"));
+    IwTrace(APPLIFIERCROSSPROMOTION_VERBOSE, ("calling ApplifierCrossPromotion[0] func: ApplifierCrossPromotionInitialize"));
 
     if (!_extLoad())
         return S3E_RESULT_ERROR;
 
-    return g_Ext.m_init(applifierID, orientationHomeButtonDown, orientationHomeButtonRight, orientationHomeButtonLeft, orientationHomeButtonUp);
+    return g_Ext.m_ApplifierCrossPromotionInitialize(applifierID, orientationHomeButtonDown, orientationHomeButtonRight, orientationHomeButtonLeft, orientationHomeButtonUp);
 }
 
-bool showBanner(int positionX, int positionY)
+bool ApplifierCrossPromotionShowBanner(int positionX, int positionY)
 {
-    IwTrace(APPLIFIERCROSSPROMOTION_VERBOSE, ("calling ApplifierCrossPromotion[1] func: showBanner"));
+    IwTrace(APPLIFIERCROSSPROMOTION_VERBOSE, ("calling ApplifierCrossPromotion[1] func: ApplifierCrossPromotionShowBanner"));
 
     if (!_extLoad())
         return false;
 
-    return g_Ext.m_showBanner(positionX, positionY);
+    return g_Ext.m_ApplifierCrossPromotionShowBanner(positionX, positionY);
 }
 
-bool hideBanner()
+bool ApplifierCrossPromotionHideBanner()
 {
-    IwTrace(APPLIFIERCROSSPROMOTION_VERBOSE, ("calling ApplifierCrossPromotion[2] func: hideBanner"));
+    IwTrace(APPLIFIERCROSSPROMOTION_VERBOSE, ("calling ApplifierCrossPromotion[2] func: ApplifierCrossPromotionHideBanner"));
 
     if (!_extLoad())
         return false;
 
-    return g_Ext.m_hideBanner();
+    return g_Ext.m_ApplifierCrossPromotionHideBanner();
 }
 
-bool prepareFeaturedGames()
+bool ApplifierCrossPromotionPrepareFeaturedGames()
 {
-    IwTrace(APPLIFIERCROSSPROMOTION_VERBOSE, ("calling ApplifierCrossPromotion[3] func: prepareFeaturedGames"));
+    IwTrace(APPLIFIERCROSSPROMOTION_VERBOSE, ("calling ApplifierCrossPromotion[3] func: ApplifierCrossPromotionPrepareFeaturedGames"));
 
     if (!_extLoad())
         return false;
 
-    return g_Ext.m_prepareFeaturedGames();
+    return g_Ext.m_ApplifierCrossPromotionPrepareFeaturedGames();
 }
 
-bool prepareInterstitial()
+bool ApplifierCrossPromotionPrepareInterstitial()
 {
-    IwTrace(APPLIFIERCROSSPROMOTION_VERBOSE, ("calling ApplifierCrossPromotion[4] func: prepareInterstitial"));
+    IwTrace(APPLIFIERCROSSPROMOTION_VERBOSE, ("calling ApplifierCrossPromotion[4] func: ApplifierCrossPromotionPrepareInterstitial"));
 
     if (!_extLoad())
         return false;
 
-    return g_Ext.m_prepareInterstitial();
+    return g_Ext.m_ApplifierCrossPromotionPrepareInterstitial();
 }
 
-bool isFeaturedGamesReady()
+bool ApplifierCrossPromotionIsFeaturedGamesReady()
 {
-    IwTrace(APPLIFIERCROSSPROMOTION_VERBOSE, ("calling ApplifierCrossPromotion[5] func: isFeaturedGamesReady"));
+    IwTrace(APPLIFIERCROSSPROMOTION_VERBOSE, ("calling ApplifierCrossPromotion[5] func: ApplifierCrossPromotionIsFeaturedGamesReady"));
 
     if (!_extLoad())
         return false;
 
-    return g_Ext.m_isFeaturedGamesReady();
+    return g_Ext.m_ApplifierCrossPromotionIsFeaturedGamesReady();
 }
 
-bool isInterstitialReady()
+bool ApplifierCrossPromotionIsInterstitialReady()
 {
-    IwTrace(APPLIFIERCROSSPROMOTION_VERBOSE, ("calling ApplifierCrossPromotion[6] func: isInterstitialReady"));
+    IwTrace(APPLIFIERCROSSPROMOTION_VERBOSE, ("calling ApplifierCrossPromotion[6] func: ApplifierCrossPromotionIsInterstitialReady"));
 
     if (!_extLoad())
         return false;
 
-    return g_Ext.m_isInterstitialReady();
+    return g_Ext.m_ApplifierCrossPromotionIsInterstitialReady();
 }
 
-bool showFeaturedGames()
+bool ApplifierCrossPromotionShowFeaturedGames()
 {
-    IwTrace(APPLIFIERCROSSPROMOTION_VERBOSE, ("calling ApplifierCrossPromotion[7] func: showFeaturedGames"));
+    IwTrace(APPLIFIERCROSSPROMOTION_VERBOSE, ("calling ApplifierCrossPromotion[7] func: ApplifierCrossPromotionShowFeaturedGames"));
 
     if (!_extLoad())
         return false;
 
-    return g_Ext.m_showFeaturedGames();
+    return g_Ext.m_ApplifierCrossPromotionShowFeaturedGames();
 }
 
-bool showInterstitial()
+bool ApplifierCrossPromotionShowInterstitial()
 {
-    IwTrace(APPLIFIERCROSSPROMOTION_VERBOSE, ("calling ApplifierCrossPromotion[8] func: showInterstitial"));
+    IwTrace(APPLIFIERCROSSPROMOTION_VERBOSE, ("calling ApplifierCrossPromotion[8] func: ApplifierCrossPromotionShowInterstitial"));
 
     if (!_extLoad())
         return false;
 
-    return g_Ext.m_showInterstitial();
+    return g_Ext.m_ApplifierCrossPromotionShowInterstitial();
 }
 
-bool pauseRenderer()
+bool ApplifierCrossPromotionPauseRenderer()
 {
-    IwTrace(APPLIFIERCROSSPROMOTION_VERBOSE, ("calling ApplifierCrossPromotion[9] func: pauseRenderer"));
+    IwTrace(APPLIFIERCROSSPROMOTION_VERBOSE, ("calling ApplifierCrossPromotion[9] func: ApplifierCrossPromotionPauseRenderer"));
 
     if (!_extLoad())
         return false;
 
-    return g_Ext.m_pauseRenderer();
+    return g_Ext.m_ApplifierCrossPromotionPauseRenderer();
 }
 
-bool moveBanner(int x, int y)
+bool ApplifierCrossPromotionMoveBanner(int x, int y)
 {
-    IwTrace(APPLIFIERCROSSPROMOTION_VERBOSE, ("calling ApplifierCrossPromotion[10] func: moveBanner"));
+    IwTrace(APPLIFIERCROSSPROMOTION_VERBOSE, ("calling ApplifierCrossPromotion[10] func: ApplifierCrossPromotionMoveBanner"));
 
     if (!_extLoad())
         return false;
 
-    return g_Ext.m_moveBanner(x, y);
+    return g_Ext.m_ApplifierCrossPromotionMoveBanner(x, y);
 }

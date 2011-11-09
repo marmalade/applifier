@@ -2,14 +2,14 @@ include:
 #include <s3eTypes.h>
 
 functions:
-s3eResult init(const char* applifierID, bool orientationHomeButtonDown, bool orientationHomeButtonRight, bool orientationHomeButtonLeft, bool orientationHomeButtonUp) S3E_RESULT_ERROR run_on_os_thread
-bool showBanner(int positionX, int positionY) false run_on_os_thread
-bool hideBanner() false run_on_os_thread
-bool prepareFeaturedGames() false run_on_os_thread
-bool prepareInterstitial() false run_on_os_thread
-bool isFeaturedGamesReady() false run_on_os_thread
-bool isInterstitialReady() false run_on_os_thread
-bool showFeaturedGames() false run_on_os_thread
-bool showInterstitial() false run_on_os_thread
-bool pauseRenderer() false run_on_os_thread
-bool moveBanner(int x, int y) false run_on_os_thread
+s3eResult ApplifierCrossPromotionInitialize(const char* applifierID, bool orientationHomeButtonDown, bool orientationHomeButtonRight, bool orientationHomeButtonLeft, bool orientationHomeButtonUp) S3E_RESULT_ERROR run_on_os_thread
+bool ApplifierCrossPromotionShowBanner(int positionX, int positionY) false run_on_os_thread
+bool ApplifierCrossPromotionHideBanner() false run_on_os_thread
+bool ApplifierCrossPromotionPrepareFeaturedGames() false run_on_os_thread
+bool ApplifierCrossPromotionPrepareInterstitial() false run_on_os_thread
+bool ApplifierCrossPromotionIsFeaturedGamesReady() false run_on_os_thread
+bool ApplifierCrossPromotionIsInterstitialReady() false run_on_os_thread
+bool ApplifierCrossPromotionShowFeaturedGames() false run_on_os_thread
+bool ApplifierCrossPromotionShowInterstitial() false run_on_os_thread
+bool ApplifierCrossPromotionPauseRenderer() false run_on_os_thread
+bool ApplifierCrossPromotionMoveBanner(int x, int y) false run_on_os_thread

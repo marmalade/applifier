@@ -120,68 +120,68 @@ void ApplifierCrossPromotionTerminate_platform()
     // Add any platform-specific termination code here
 }
 
-s3eResult init_platform(const char* applifierID, bool orientationHomeButtonDown, bool orientationHomeButtonRight, bool orientationHomeButtonLeft, bool orientationHomeButtonUp)
+s3eResult ApplifierCrossPromotionInitialize_platform(const char* applifierID, bool orientationHomeButtonDown, bool orientationHomeButtonRight, bool orientationHomeButtonLeft, bool orientationHomeButtonUp)
 {
     JNIEnv* env = s3eEdkJNIGetEnv();
     jstring applifierID_jstr = env->NewStringUTF(applifierID);
     return (s3eResult)env->CallIntMethod(g_Obj, g_init, applifierID_jstr, orientationHomeButtonDown, orientationHomeButtonRight, orientationHomeButtonLeft, orientationHomeButtonUp);
 }
 
-bool showBanner_platform(int positionX, int positionY)
+bool ApplifierCrossPromotionShowBanner_platform(int positionX, int positionY)
 {
     JNIEnv* env = s3eEdkJNIGetEnv();
     return (bool)env->CallBooleanMethod(g_Obj, g_showBanner, positionX, positionY);
 }
 
-bool moveBanner_platform(int x, int y)
+bool ApplifierCrossPromotionMoveBanner_platform(int x, int y)
 {
     JNIEnv* env = s3eEdkJNIGetEnv();
     return (bool)env->CallBooleanMethod(g_Obj, g_moveBanner, x, y);
 }
 
-bool hideBanner_platform()
+bool ApplifierCrossPromotionHideBanner_platform()
 {
     JNIEnv* env = s3eEdkJNIGetEnv();
     return (bool)env->CallBooleanMethod(g_Obj, g_hideBanner);
 }
 
-bool prepareFeaturedGames_platform()
+bool ApplifierCrossPromotionPrepareFeaturedGames_platform()
 {
     JNIEnv* env = s3eEdkJNIGetEnv();
     return (bool)env->CallBooleanMethod(g_Obj, g_prepareFeaturedGames);
 }
 
-bool prepareInterstitial_platform()
+bool ApplifierCrossPromotionPrepareInterstitial_platform()
 {
     JNIEnv* env = s3eEdkJNIGetEnv();
     return (bool)env->CallBooleanMethod(g_Obj, g_prepareInterstitial);
 }
 
-bool isFeaturedGamesReady_platform()
+bool ApplifierCrossPromotionIsFeaturedGamesReady_platform()
 {
     JNIEnv* env = s3eEdkJNIGetEnv();
     return (bool)env->CallBooleanMethod(g_Obj, g_isFeaturedGamesReady);
 }
 
-bool isInterstitialReady_platform()
+bool ApplifierCrossPromotionIsInterstitialReady_platform()
 {
     JNIEnv* env = s3eEdkJNIGetEnv();
     return (bool)env->CallBooleanMethod(g_Obj, g_isInterstitialReady);
 }
 
-bool showFeaturedGames_platform()
+bool ApplifierCrossPromotionShowFeaturedGames_platform()
 {
     JNIEnv* env = s3eEdkJNIGetEnv();
     return (bool)env->CallBooleanMethod(g_Obj, g_showFeaturedGames);
 }
 
-bool showInterstitial_platform()
+bool ApplifierCrossPromotionShowInterstitial_platform()
 {
     JNIEnv* env = s3eEdkJNIGetEnv();
     return (bool)env->CallBooleanMethod(g_Obj, g_showInterstitial);
 }
 
-bool pauseRenderer_platform()
+bool ApplifierCrossPromotionPauseRenderer_platform()
 {
     JNIEnv* env = s3eEdkJNIGetEnv();
     return (bool)env->CallBooleanMethod(g_Obj, g_pauseRenderer);
