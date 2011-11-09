@@ -111,19 +111,19 @@ LOAD /Developer/android-ndk-r6/platforms/android-9/arch-arm/usr/lib/libstdc++.so
 .text           0x000003d4      0xc94
  *(.text .stub .text.* .gnu.linkonce.t.*)
  .text          0x000003d4      0x858 release/ApplifierCrossPromotion_platform.os
-                0x00000874                _Z28isInterstitialReady_platformv
+                0x00000994                _Z42ApplifierCrossPromotionHideBanner_platformv
+                0x000009f4                _Z42ApplifierCrossPromotionShowBanner_platformii
                 0x000003d4                _Z41ApplifierCrossPromotionTerminate_platformv
-                0x00000994                _Z19hideBanner_platformv
+                0x00000814                _Z49ApplifierCrossPromotionShowFeaturedGames_platformv
+                0x00000b90                _Z42ApplifierCrossPromotionInitialize_platformPKcbbbb
+                0x00000874                _Z51ApplifierCrossPromotionIsInterstitialReady_platformv
                 0x000003d8                _Z36ApplifierCrossPromotionInit_platformv
-                0x00000814                _Z26showFeaturedGames_platformv
-                0x00000b90                _Z13init_platformPKcbbbb
-                0x00000ac4                _Z19moveBanner_platformii
-                0x00000754                _Z22pauseRenderer_platformv
-                0x000007b4                _Z25showInterstitial_platformv
-                0x000008d4                _Z29isFeaturedGamesReady_platformv
-                0x00000a64                _Z29prepareFeaturedGames_platformv
-                0x00000934                _Z28prepareInterstitial_platformv
-                0x000009f4                _Z19showBanner_platformii
+                0x00000934                _Z51ApplifierCrossPromotionPrepareInterstitial_platformv
+                0x00000a64                _Z52ApplifierCrossPromotionPrepareFeaturedGames_platformv
+                0x000008d4                _Z52ApplifierCrossPromotionIsFeaturedGamesReady_platformv
+                0x00000754                _Z45ApplifierCrossPromotionPauseRenderer_platformv
+                0x000007b4                _Z48ApplifierCrossPromotionShowInterstitial_platformv
+                0x00000ac4                _Z42ApplifierCrossPromotionMoveBanner_platformii
  .text._ZN7_JNIEnv11GetMethodIDEP7_jclassPKcS3_
                 0x00000c2c       0x1c release/ApplifierCrossPromotion_platform.os
                 0x00000c2c                _ZN7_JNIEnv11GetMethodIDEP7_jclassPKcS3_
@@ -137,18 +137,18 @@ LOAD /Developer/android-ndk-r6/platforms/android-9/arch-arm/usr/lib/libstdc++.so
                 0x00000cb8       0x38 release/ApplifierCrossPromotion_platform.os
                 0x00000cb8                _ZN7_JNIEnv9NewObjectEP7_jclassP10_jmethodIDz
  .text          0x00000cf0       0xe0 release/ApplifierCrossPromotion.os
-                0x00000d40                prepareInterstitial
-                0x00000d60                hideBanner
+                0x00000d20                ApplifierCrossPromotionIsInterstitialReady
                 0x00000dc0                _Z27ApplifierCrossPromotionInitv
-                0x00000d10                showFeaturedGames
-                0x00000cf0                pauseRenderer
-                0x00000d80                showBanner
-                0x00000d30                isFeaturedGamesReady
-                0x00000d20                isInterstitialReady
-                0x00000d90                init
-                0x00000d70                moveBanner
-                0x00000d00                showInterstitial
-                0x00000d50                prepareFeaturedGames
+                0x00000d00                ApplifierCrossPromotionShowInterstitial
+                0x00000d50                ApplifierCrossPromotionPrepareFeaturedGames
+                0x00000d80                ApplifierCrossPromotionShowBanner
+                0x00000d90                ApplifierCrossPromotionInitialize
+                0x00000d40                ApplifierCrossPromotionPrepareInterstitial
+                0x00000d30                ApplifierCrossPromotionIsFeaturedGamesReady
+                0x00000d70                ApplifierCrossPromotionMoveBanner
+                0x00000d60                ApplifierCrossPromotionHideBanner
+                0x00000cf0                ApplifierCrossPromotionPauseRenderer
+                0x00000d10                ApplifierCrossPromotionShowFeaturedGames
                 0x00000db0                _Z32ApplifierCrossPromotionTerminatev
  .text          0x00000dd0      0x298 release/ApplifierCrossPromotion_register.os
                 0x00000dd0                _Z34ApplifierCrossPromotionRegisterExtv
