@@ -25,26 +25,37 @@ S3E_BEGIN_C_DECL
  */
 s3eBool ApplifierCrossPromotionAvailable();
 
+// Initialize Applifier Cross Promotion
 s3eResult ApplifierCrossPromotionInitialize(const char* applifierID, bool orientationHomeButtonDown, bool orientationHomeButtonRight, bool orientationHomeButtonLeft, bool orientationHomeButtonUp);
 
+// Show banner view at position
 bool ApplifierCrossPromotionShowBanner(int positionX, int positionY);
 
+// Hide the banner view
 bool ApplifierCrossPromotionHideBanner();
 
+// Prepare the 'featured games' view
 bool ApplifierCrossPromotionPrepareFeaturedGames();
 
+// Prepare the 'interstitial' view
 bool ApplifierCrossPromotionPrepareInterstitial();
 
+// Returns true if the 'featured games' view is ready
 bool ApplifierCrossPromotionIsFeaturedGamesReady();
 
+// Returns true if the 'interstitial' view is ready
 bool ApplifierCrossPromotionIsInterstitialReady();
 
+// Show the 'featured games' view
 bool ApplifierCrossPromotionShowFeaturedGames();
 
+// Show the 'interstitial' view
 bool ApplifierCrossPromotionShowInterstitial();
 
+// Game should pause renderer
 bool ApplifierCrossPromotionPauseRenderer();
 
+// Move banner to position
 bool ApplifierCrossPromotionMoveBanner(int x, int y);
 
 S3E_END_C_DECL
