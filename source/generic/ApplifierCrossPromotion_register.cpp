@@ -19,7 +19,10 @@ extern s3eResult ApplifierCrossPromotionInit();
 extern void ApplifierCrossPromotionTerminate();
 
 
-#if defined I3D_OS_IPHONE || defined I3D_OS_OSX
+// On platforms that use a seperate UI/OS thread we can autowrap functions
+// here.   Note that we can't use the S3E_USE_OS_THREAD define since this
+// code is oftern build standalone, outside the main loader build.
+#if defined I3D_OS_IPHONE || defined I3D_OS_OSX || defined I3D_OS_LINUX || defined I3D_OS_WINDOWS
 
 static s3eResult ApplifierCrossPromotionInitialize_wrap(const char* applifierID, bool orientationHomeButtonDown, bool orientationHomeButtonRight, bool orientationHomeButtonLeft, bool orientationHomeButtonUp)
 {
@@ -99,7 +102,7 @@ static bool ApplifierCrossPromotionMoveBanner_wrap(int x, int y)
 #define ApplifierCrossPromotionPauseRenderer ApplifierCrossPromotionPauseRenderer_wrap
 #define ApplifierCrossPromotionMoveBanner ApplifierCrossPromotionMoveBanner_wrap
 
-#endif /* I3D_OS_IPHONE */
+#endif
 
 void ApplifierCrossPromotionRegisterExt()
 {
