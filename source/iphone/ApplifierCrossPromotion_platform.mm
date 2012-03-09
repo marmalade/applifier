@@ -8,7 +8,7 @@
  */
 #include "ApplifierCrossPromotion_internal.h"
 #include "IwDebug.h"
-#import "Applifier.h"
+#import <Applifier/Applifier.h>
 #import "s3eDevice.h"
 #import "s3eEdk.h"
 
