@@ -28,35 +28,22 @@ subproject "$MARMALADE_ROOT/s3e/edk"
 
 if {{defined I3D_OS_IPHONE}}
 {
-	includepath
-    {
-        source/iphone/
-        source/iphone/3rdparty/Facebook
-        source/iphone/3rdparty/SBJSON
-        source/iphone/3rdparty/SDURLCache
-    }
-	
+    option ios-version=5.1
+    option compiler=llvm-gcc
+
+#    frameworks
+#    {
+#    }
+
+    # A hack, since mkb fails to support cflags, cppflags OR frameworks properly
+#    includepath applifier-mobile/ios/build/Applifier/Build/Products/Debug-iphoneos/Applifier.framework/Headers
+    includepath applifier-mobile/ios/
+
     files
     {
         ["source"]
         (use_first_found, source/iphone, source/generic)
         ApplifierCrossPromotion_platform.mm
-		
-		#Add any iphone-specific files here
-        Applifier.m
-        ApplifierView.m
-        3rdparty/Facebook/ApplifierFacebook.m
-        3rdparty/Facebook/ApplifierFBDialog.m
-        3rdparty/Facebook/ApplifierFBLoginDialog.m
-        3rdparty/Facebook/ApplifierFBRequest.m
-        "3rdparty/SBJSON/ApplifierNSObject+SBJSON.m"
-        "3rdparty/SBJSON/ApplifierNSString+SBJSON.m"
-        3rdparty/SBJSON/ApplifierSBJSON.m
-        3rdparty/SBJSON/ApplifierSBJsonBase.m
-        3rdparty/SBJSON/ApplifierSBJsonParser.m
-        3rdparty/SBJSON/ApplifierSBJsonWriter.m
-        3rdparty/SDURLCache/ApplifierSDURLCache.m
-
     }
 }
 
