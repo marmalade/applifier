@@ -1,0 +1,11 @@
+CIwResGroup
+{
+	name	iwui_textures
+	
+	.\background.tga
+	.\button_down.tga
+	.\button_up.tga
+	.\focus.tga
+
+	.\iwui_style.mtl
+}

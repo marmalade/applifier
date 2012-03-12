@@ -1,0 +1,16 @@
+include resource_templates.itx
+
+CIwResGroup
+{
+	name "IwUIHelloWorld"
+
+	useTemplate	"image"	"iwui"
+	useTemplate	"mtl"	"iwui"
+
+	iwui_style/iwui_style.group { inline true }
+
+	useTemplate	"image"	"default"
+	useTemplate	"mtl"	"default"
+
+	"IwUIHelloWorld/hellodialog.ui"
+}

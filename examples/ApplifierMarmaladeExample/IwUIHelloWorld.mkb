@@ -1,0 +1,47 @@
+#!/usr/bin/env mkb
+
+files
+{
+	(source)
+	IwUIHelloWorld.cpp
+
+	[Data]
+	(data)
+	IwUIHelloWorld.group
+	IwUIHelloWorld/hellodialog.ui
+}
+
+subprojects
+{
+	iwui
+	applifier
+	../ExamplesCore
+}
+
+assets
+{
+	#Deploy .group.bin files from the 'data-ram/data-gles1' directory if they
+	#have been written there by running the application in resource building
+	#mode, otherwise deploy pre-built binaries from the 'data' directory.
+	#
+	#For your own application, you are likely to want only the
+	#'data-ram/data-gles1' directory specified here.
+	#
+	#See the IwResManager documentation for more information on resource building.
+
+	(data-ram/data-gles1, data)
+	iwuihelloworld.group.bin
+
+	(data)
+}
+
+deployments 
+{
+	name='ApplifierTest'
+
+	["Default"]
+	"android,iphone"
+	iphone-bundle-url-name="com.applifier.FacebookConnect"
+	iphone-bundle-url-schemes="fb103673636361992asdf"
+}
+

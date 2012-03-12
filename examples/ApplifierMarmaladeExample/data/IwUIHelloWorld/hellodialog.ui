@@ -1,0 +1,131 @@
+CIwUIElement 
+{
+	name "Vertical"
+	pos  { 0 162 }
+	size  { 320 155 }
+	sizeToContent true
+	CIwUILabel 
+	{
+		name "Label"
+		pos  { 99 0 }
+		size  { 122 20 }
+		style <label_large>
+		caption "Applifier tests"
+	}
+	CIwUIButton 
+	{
+		name "ButtonMoreGames"
+		pos  { 0 20 }
+		size  { 320 58 }
+		style <button>
+		sizeMax  { 120 37 }
+		caption "More games"
+		alignH "centre"
+		OnButtonClick { "OnClickFeaturedGames" }
+
+	}
+	CIwUIButton 
+	{
+		name "ButtonInterstitial"
+		pos  { 0 20 }
+		size  { 320 58 }
+		style <button>
+		sizeMax  { 120 37 }
+		caption "Interstitial"
+		alignH "centre"
+		OnButtonClick { "OnClickInterstitial" }
+
+	}
+	CIwUIButton 
+	{
+		name "ButtonPrepareMoreGames"
+		pos  { 0 20 }
+		size  { 320 58 }
+		style <button>
+		sizeMax  { 120 37 }
+		caption "Prepare More games"
+		alignH "centre"
+		OnButtonClick { "OnClickPrepareFeaturedGames" }
+
+	}
+	CIwUIButton 
+	{
+		name "ButtonPrepareInterstitial"
+		pos  { 0 20 }
+		size  { 320 58 }
+		style <button>
+		sizeMax  { 120 37 }
+		caption "Prepare Interstitial"
+		alignH "centre"
+		OnButtonClick { "OnClickPrepareInterstitial" }
+
+	}
+	CIwUIButton 
+	{
+		name "ButtonBanner"
+		pos  { 0 20 }
+		size  { 320 58 }
+		style <button>
+		sizeMax  { 120 37 }
+		caption "Banner"
+		alignH "centre"
+		OnButtonClick { "OnClickBanner" }
+
+	}
+	CIwUIButton 
+	{
+		name "ButtonHideBanner"
+		pos  { 0 20 }
+		size  { 320 58 }
+		style <button>
+		sizeMax  { 120 37 }
+		caption "Hide Banner"
+		alignH "centre"
+		OnButtonClick { "OnClickHideBanner" }
+	}
+	CIwUILayoutVertical 
+	{
+		element 
+		{
+			name "Label"
+			alignH "centre"
+			alignV "bottom"
+		}
+		element 
+		{
+			name "ButtonPrepareMoreGames"
+			alignH "centre"
+			alignV "bottom"
+		}
+		element 
+		{
+			name "ButtonPrepareInterstitial"
+			alignH "centre"
+			alignV "bottom"
+		}
+		element 
+		{
+			name "ButtonMoreGames"
+			alignH "centre"
+			alignV "bottom"
+		}
+		element 
+		{
+			name "ButtonInterstitial"
+			alignH "centre"
+			alignV "bottom"
+		}
+		element 
+		{
+			name "ButtonBanner"
+			alignH "centre"
+			alignV "bottom"
+		}
+		element 
+		{
+			name "ButtonHideBanner"
+			alignH "centre"
+			alignV "bottom"
+		}
+	}
+}
