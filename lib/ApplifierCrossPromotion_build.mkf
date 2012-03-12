@@ -37,7 +37,7 @@ if {{defined I3D_OS_IPHONE}}
 
     # A hack, since mkb fails to support cflags, cppflags OR frameworks properly
 #    includepath applifier-mobile/ios/build/Applifier/Build/Products/Debug-iphoneos/Applifier.framework/Headers
-    includepath applifier-mobile/ios/
+    includepath ../applifier-mobile/ios/
 
     files
     {
