@@ -4,3 +4,6 @@ ApplifierCrossPromotion.mkf
 
 *_d.map
 *_d.so
+
+lib/lib/*
+lib/stamp/*
