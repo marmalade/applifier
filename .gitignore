@@ -1,5 +1,6 @@
 build_*
 .DS_Store
+ApplifierCrossPromotion.mkf
 
 *_d.map
 *_d.so

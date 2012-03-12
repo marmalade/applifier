@@ -10,6 +10,6 @@ files
 
 librarypath "$MARMALADE_ROOT/s3e/deploy/plugins/android/android.jar"
 librarypath "$MARMALADE_ROOT/s3e/loader/android/s3e_release.jar"
-librarypath "applifier-mobile/android/sources/jar/applifier-sdk-android.jar"
+librarypath "../applifier-mobile/android/sources/jar/applifier-sdk-android.jar"
 
 option output-name=lib/android/ApplifierCrossPromotion.jar
