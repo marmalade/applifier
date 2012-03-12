@@ -48,7 +48,7 @@ deployments
 {
     iphone-bundle-url-name="com.applifier.FacebookConnect"
     iphone-bundle-url-schemes="fb103673636361992asdf"
-    iphone-link-opts="-F applifier-mobile/ios/build/Applifier/Build/Products/Debug-iphoneos -framework Applifier" #Use this to bring in any additional link options needed
+    iphone-link-opts="-F../../../applifier-mobile/ios/build/Applifier/Build/Products/Debug-iphoneos -framework Applifier" #Use this to bring in any additional link options needed
     iphone-link-libs="ApplifierCrossPromotion " #quotes and space are needed here to separate appended options
     iphone-link-libdirs=lib/lib/iphone
 }

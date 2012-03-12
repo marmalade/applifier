@@ -1,3 +1,1 @@
-		<activity android:name="com.applifier.android.discovery.ApplifierFullscreenActivity" 
-		          android:theme="@android:style/Theme.NoTitleBar.Fullscreen" 
-		          android:configChanges="keyboardHidden|orientation"/>	
+<activity android:name="com.applifier.android.discovery.ApplifierFullscreenActivity" android:theme="@android:style/Theme.NoTitleBar.Fullscreen" android:configChanges="keyboardHidden|orientation"/>	
