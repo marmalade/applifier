@@ -1,0 +1,3 @@
+[submodule "applifier-mobile"]
+	path = applifier-mobile
+	url = https://github.com/Applifier/applifier-mobile.git
