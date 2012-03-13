@@ -146,10 +146,7 @@ public:
 						 pClick->GetPressed() ? "down" : "up",
 						 pClick->GetPos().x, pClick->GetPos().y));           
 
-			//if (ApplifierCrossPromotionAvailable())
-			//	moveBanner(pClick->GetPos().x, pClick->GetPos().y);
-
-		}
+	}
         else if (pEvent->GetID() == IWUI_EVENT_POINTER_MOVE)
         {
             CIwUIEventPointerMove* pMove = IwSafeCast<CIwUIEventPointerMove*>(pEvent);
