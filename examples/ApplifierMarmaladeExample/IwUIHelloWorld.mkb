@@ -41,7 +41,6 @@ deployments
 
 	["Default"]
 	"android,iphone"
-	iphone-bundle-url-name="com.applifier.FacebookConnect"
 	iphone-bundle-url-schemes="fb103673636361992asdf"
 }
 
