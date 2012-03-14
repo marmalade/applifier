@@ -79,7 +79,7 @@ class ButtonHandler : public CIwUIController
 public:
     ButtonHandler()
     {
-	    IwTrace(ButtonHandler, ("ButtonHandler constructor"));
+	    IwTrace(ApplifierMarmalade, ("ButtonHandler constructor"));
 
         IW_UI_CREATE_VIEW_SLOT1(this, "ButtonHandler", ButtonHandler, OnClickBanner, CIwUIElement*)
         IW_UI_CREATE_VIEW_SLOT1(this, "ButtonHandler", ButtonHandler, OnClickHideBanner, CIwUIElement*)
@@ -92,8 +92,14 @@ public:
 	//show banner
     void OnClickBanner(CIwUIElement*)
     {
-		if (ApplifierCrossPromotionAvailable())
-			ApplifierCrossPromotionShowBanner(25,30);
+		if (ApplifierCrossPromotionAvailable()) {
+            bool showBanner = ApplifierCrossPromotionShowBanner(25, 30);
+            IwTrace(ApplifierMarmalade, ("Showing banner: %i", showBanner));
+        }
+        else {
+            bool crossPromotionAvailable = ApplifierCrossPromotionAvailable();
+            IwTrace(ApplifierMarmalade, ("Did not show banner, crossPromotionAvailable: %i", crossPromotionAvailable));
+        }
     }
 
 	//show banner
@@ -107,67 +113,89 @@ public:
     //show featured games
     void OnClickFeaturedGames(CIwUIElement*)
     {
-		if (ApplifierCrossPromotionAvailable())
-			ApplifierCrossPromotionShowFeaturedGames();
+		if (ApplifierCrossPromotionAvailable() && ApplifierCrossPromotionIsFeaturedGamesReady()) {
+            bool showFeaturedGames = ApplifierCrossPromotionShowFeaturedGames();            
+            if (!showFeaturedGames)
+                IwTrace(ApplifierMarmalade, ("Could not show More Games for some reason: %i", showFeaturedGames));
+        }
+        else {
+            bool isFeaturedGamesReady = ApplifierCrossPromotionIsFeaturedGamesReady();
+            bool crossPromotionAvailable = ApplifierCrossPromotionAvailable();
+            IwTrace(ApplifierMarmalade, ("Could not show More Games, isFeaturedGamesReady: %i", isFeaturedGamesReady));
+        }
+			
     }
 	
 	//show interstitial
     void OnClickInterstitial(CIwUIElement*)
     {
-		if (ApplifierCrossPromotionAvailable())
-			ApplifierCrossPromotionShowInterstitial();
+		if (ApplifierCrossPromotionAvailable() && ApplifierCrossPromotionIsInterstitialReady()) {
+            bool showInterstitial = ApplifierCrossPromotionShowInterstitial();
+            if (!showInterstitial)
+                IwTrace(ApplifierMarmalade, ("Could not show Interstitial, showInterstitial: %i", showInterstitial));
+        }
+        else {
+            bool crossPromotionAvailable = ApplifierCrossPromotionAvailable();
+            bool interstitialReady = ApplifierCrossPromotionIsInterstitialReady();
+            IwTrace(ApplifierMarmalade, ("Could not show Interstitial, crossPromotionAvailable: %i, interstitialReady: %i", crossPromotionAvailable, interstitialReady));
+        }
+			
     }
     //prepare featured games
     void OnClickPrepareFeaturedGames(CIwUIElement*)
     {
-		if (ApplifierCrossPromotionAvailable())
-			ApplifierCrossPromotionPrepareFeaturedGames();
+		if (ApplifierCrossPromotionAvailable()) {
+            bool result = ApplifierCrossPromotionPrepareFeaturedGames();
+            if (!result)
+                IwTrace(ApplifierMarmalade, ("Could not start preparing More Games: %i", result));
+        }			
     }
 	
 	//prepare interstitial
     void OnClickPrepareInterstitial(CIwUIElement*)
     {
-		if (ApplifierCrossPromotionAvailable())
-			ApplifierCrossPromotionPrepareInterstitial();
+		if (ApplifierCrossPromotionAvailable()) {
+            bool result = ApplifierCrossPromotionPrepareInterstitial();
+            if (!result)
+                IwTrace(ApplifierMarmalade, ("Could not start preparing Interstitial: %i", result));
+        }			
     }
 	
 };
 
 class CPointerWatcher : public IIwUIEventHandler
 {
-public:
-    virtual    bool FilterEvent(CIwEvent* pEvent)
-    {
-        if (pEvent->GetID() == IWUI_EVENT_CLICK)
+    public:
+        virtual bool FilterEvent(CIwEvent* pEvent)
         {
-            CIwUIEventClick* pClick = IwSafeCast<CIwUIEventClick*>(pEvent);
+            if (pEvent->GetID() == IWUI_EVENT_CLICK)
+            {
+                CIwUIEventClick* pClick = IwSafeCast<CIwUIEventClick*>(pEvent);
 			
-            IwTrace(UI, ("Pointer click %s at %d, %d",
-						 pClick->GetPressed() ? "down" : "up",
-						 pClick->GetPos().x, pClick->GetPos().y));           
+                IwTrace(ApplifierMarmalade, ("Pointer click %s at %d, %d",
+                             pClick->GetPressed() ? "down" : "up",
+                             pClick->GetPos().x, pClick->GetPos().y));           
 
-	}
-        else if (pEvent->GetID() == IWUI_EVENT_POINTER_MOVE)
-        {
-            CIwUIEventPointerMove* pMove = IwSafeCast<CIwUIEventPointerMove*>(pEvent);
+            }
+            else if (pEvent->GetID() == IWUI_EVENT_POINTER_MOVE)
+            {
+                CIwUIEventPointerMove* pMove = IwSafeCast<CIwUIEventPointerMove*>(pEvent);
 			
-            IwTrace(UI, ("Pointer moved to %d, %d",
-						 pMove->GetPos().x, pMove->GetPos().y));
-			if (ApplifierCrossPromotionAvailable())
-				ApplifierCrossPromotionMoveBanner(pMove->GetPos().x, pMove->GetPos().y);
-        }
+                IwTrace(ApplifierMarmalade, ("Pointer moved to %d, %d",
+                             pMove->GetPos().x, pMove->GetPos().y));
+                if (ApplifierCrossPromotionAvailable())
+                    ApplifierCrossPromotionMoveBanner(pMove->GetPos().x, pMove->GetPos().y);
+            }
 		
-        return false;
-    }
+            return false;
+        }
 	
-    virtual bool HandleEvent(CIwEvent* pEvent)
-    {
-        return false;
-    }
+        virtual bool HandleEvent(CIwEvent* pEvent)
+        {
+            return false;
+        }
 };
-
-
-
+                    
 ButtonHandler* buttonHandler = NULL;
 
 void ExampleInit()

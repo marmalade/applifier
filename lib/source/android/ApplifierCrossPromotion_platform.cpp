@@ -94,8 +94,7 @@ s3eResult ApplifierCrossPromotionInit_platform()
         goto fail;
 
 
-
-    IwTrace(APPLIFIERCROSSPROMOTION, ("APPLIFIERCROSSPROMOTION init success"));
+    IwTrace(ApplifierMarmalade, ("ApplifierCrossPromotion init success"));
     g_Obj = env->NewGlobalRef(obj);
     env->DeleteLocalRef(obj);
     env->DeleteLocalRef(cls);
@@ -105,11 +104,12 @@ s3eResult ApplifierCrossPromotionInit_platform()
     
 fail:
     jthrowable exc = env->ExceptionOccurred();
+    IwTrace(ApplifierMarmalade, ("Coder has appointment with failure"));
     if (exc)
     {
         env->ExceptionDescribe();
         env->ExceptionClear();
-        IwTrace(ApplifierCrossPromotion, ("One or more java methods could not be found"));
+        IwTrace(ApplifierMarmalade, ("One or more java methods could not be found"));
     }
     return S3E_RESULT_ERROR;
 
