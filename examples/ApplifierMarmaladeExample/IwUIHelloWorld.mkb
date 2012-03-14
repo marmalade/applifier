@@ -41,6 +41,7 @@ deployments
 
 	["Default"]
 	"android,iphone"
+	iphone-link-opts="-F../../../applifier-mobile/ios/build/Applifier/Build/Products/Debug-iphoneos -framework Applifier"
 	iphone-bundle-url-schemes="fb103673636361992asdf"
 }
 
