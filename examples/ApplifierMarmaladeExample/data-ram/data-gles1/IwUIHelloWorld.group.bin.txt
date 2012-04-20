@@ -186,46 +186,85 @@ ResGroupResources:
 			"Label" (0xfd835a5)
 			Size: 87
 		CIwUIButton (0xc64b7cc2)
-			"ButtonMoreGames" (0x27f988e1)
-			Size: 131
-		CIwUIButton (0xc64b7cc2)
-			"ButtonInterstitial" (0xfc5e225d)
-			Size: 133
-		CIwUIButton (0xc64b7cc2)
-			"ButtonPrepareMoreGames" (0x2c975bd0)
-			Size: 139
-		CIwUIButton (0xc64b7cc2)
-			"ButtonPrepareInterstitial" (0xb85c2ec)
-			Size: 141
-		CIwUIButton (0xc64b7cc2)
 			"ButtonBanner" (0x161cc3d7)
 			Size: 127
 		CIwUIButton (0xc64b7cc2)
 			"ButtonHideBanner" (0x60c86b31)
-			Size: 132
+			Size: 130
+		CIwUIButton (0xc64b7cc2)
+			"ButtonMoreGames" (0x27f988e1)
+			Size: 119
+		CIwUIButton (0xc64b7cc2)
+			"ButtonPrepareMoreGames" (0x2c975bd0)
+			Size: 127
+		CIwUIButton (0xc64b7cc2)
+			"ButtonPrepareInterstitial" (0xb85c2ec)
+			Size: 129
+		CIwUIButton (0xc64b7cc2)
+			"ButtonInterstitial" (0xfc5e225d)
+			Size: 121
+		CIwUIButton (0xc64b7cc2)
+			"ButtonPrepareCustomInterstitial" (0x6a527467)
+			Size: 136
+		CIwUIButton (0xc64b7cc2)
+			"ButtonCustomInterstitial" (0x742ae498)
+			Size: 128
+		CIwUIButton (0xc64b7cc2)
+			"ButtonPrepareAnimated" (0x10ba0853)
+			Size: 125
+		CIwUIButton (0xc64b7cc2)
+			"ButtonAnimated" (0x1125744)
+			Size: 117
 		CIwUILayoutVertical::Item (0xe97a0d21)
 			"Label" (0xfd835a5)
-			Size: 55
+			Size: 43
 		CIwUILayoutVertical::Item (0xe97a0d21)
-			"ButtonPrepareMoreGames" (0x2c975bd0)
-			Size: 55
+			"" (0x0)
+			CIwUILayoutHorizontal::Item (0x6b1ae731)
+				"ButtonHideBanner" (0x60c86b31)
+				Size: 31
+			CIwUILayoutHorizontal::Item (0x6b1ae731)
+				"ButtonBanner" (0x161cc3d7)
+				Size: 31
+			Size: 120
 		CIwUILayoutVertical::Item (0xe97a0d21)
-			"ButtonPrepareInterstitial" (0xb85c2ec)
-			Size: 55
+			"" (0x0)
+			CIwUILayoutHorizontal::Item (0x6b1ae731)
+				"ButtonPrepareMoreGames" (0x2c975bd0)
+				Size: 31
+			CIwUILayoutHorizontal::Item (0x6b1ae731)
+				"ButtonMoreGames" (0x27f988e1)
+				Size: 31
+			Size: 120
 		CIwUILayoutVertical::Item (0xe97a0d21)
-			"ButtonMoreGames" (0x27f988e1)
-			Size: 55
+			"" (0x0)
+			CIwUILayoutHorizontal::Item (0x6b1ae731)
+				"ButtonPrepareInterstitial" (0xb85c2ec)
+				Size: 31
+			CIwUILayoutHorizontal::Item (0x6b1ae731)
+				"ButtonInterstitial" (0xfc5e225d)
+				Size: 31
+			Size: 120
 		CIwUILayoutVertical::Item (0xe97a0d21)
-			"ButtonInterstitial" (0xfc5e225d)
-			Size: 55
+			"" (0x0)
+			CIwUILayoutHorizontal::Item (0x6b1ae731)
+				"ButtonPrepareCustomInterstitial" (0x6a527467)
+				Size: 31
+			CIwUILayoutHorizontal::Item (0x6b1ae731)
+				"ButtonCustomInterstitial" (0x742ae498)
+				Size: 31
+			Size: 120
 		CIwUILayoutVertical::Item (0xe97a0d21)
-			"ButtonBanner" (0x161cc3d7)
-			Size: 55
-		CIwUILayoutVertical::Item (0xe97a0d21)
-			"ButtonHideBanner" (0x60c86b31)
-			Size: 55
-		Size: 1374
-	ResList 'CIwUISoftKeyboard' pos:537720 size:3579
+			"" (0x0)
+			CIwUILayoutHorizontal::Item (0x6b1ae731)
+				"ButtonPrepareAnimated" (0x10ba0853)
+				Size: 31
+			CIwUILayoutHorizontal::Item (0x6b1ae731)
+				"ButtonAnimated" (0x1125744)
+				Size: 31
+			Size: 120
+		Size: 2100
+	ResList 'CIwUISoftKeyboard' pos:537720 size:4305
 
-ResGroupResources: Wrote 541258 bytes to CIwResGroup "IwUIHelloWorld"
+ResGroupResources: Wrote 541984 bytes to CIwResGroup "IwUIHelloWorld"
 

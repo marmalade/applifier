@@ -73,6 +73,7 @@
 #include "IwGx.h"
 #include "IwUI.h"
 #include "ApplifierCrossPromotion.h"
+#include <string>
 
 class ButtonHandler : public CIwUIController
 {
@@ -87,13 +88,19 @@ public:
         IW_UI_CREATE_VIEW_SLOT1(this, "ButtonHandler", ButtonHandler, OnClickPrepareInterstitial, CIwUIElement*)
         IW_UI_CREATE_VIEW_SLOT1(this, "ButtonHandler", ButtonHandler, OnClickFeaturedGames, CIwUIElement*)
         IW_UI_CREATE_VIEW_SLOT1(this, "ButtonHandler", ButtonHandler, OnClickInterstitial, CIwUIElement*)
+
+        IW_UI_CREATE_VIEW_SLOT1(this, "ButtonHandler", ButtonHandler, OnClickCustomInterstitial, CIwUIElement*)
+        IW_UI_CREATE_VIEW_SLOT1(this, "ButtonHandler", ButtonHandler, OnClickPrepareCustomInterstitial, CIwUIElement*)
+        IW_UI_CREATE_VIEW_SLOT1(this, "ButtonHandler", ButtonHandler, OnClickAnimated, CIwUIElement*)
+        IW_UI_CREATE_VIEW_SLOT1(this, "ButtonHandler", ButtonHandler, OnClickPrepareAnimated, CIwUIElement*)
+
     }
 	
-	//show banner
+    //show banner
     void OnClickBanner(CIwUIElement*)
     {
-		if (ApplifierCrossPromotionAvailable()) {
-            bool showBanner = ApplifierCrossPromotionShowBanner(25, 30);
+	if (ApplifierCrossPromotionAvailable()) {
+            bool showBanner = ApplifierCrossPromotionShowBanner(15, 30);
             IwTrace(ApplifierMarmalade, ("Showing banner: %i", showBanner));
         }
         else {
@@ -102,65 +109,110 @@ public:
         }
     }
 
-	//show banner
+    //hide banner
     void OnClickHideBanner(CIwUIElement*)
     {
-		if (ApplifierCrossPromotionAvailable())
-			ApplifierCrossPromotionHideBanner();
+	if (ApplifierCrossPromotionAvailable())
+		ApplifierCrossPromotionHideBanner();
     }
-	
-	
-    //show featured games
-    void OnClickFeaturedGames(CIwUIElement*)
-    {
-		if (ApplifierCrossPromotionAvailable() && ApplifierCrossPromotionIsFeaturedGamesReady()) {
-            bool showFeaturedGames = ApplifierCrossPromotionShowFeaturedGames();            
-            if (!showFeaturedGames)
-                IwTrace(ApplifierMarmalade, ("Could not show More Games for some reason: %i", showFeaturedGames));
-        }
-        else {
-            bool isFeaturedGamesReady = ApplifierCrossPromotionIsFeaturedGamesReady();
-            bool crossPromotionAvailable = ApplifierCrossPromotionAvailable();
-            IwTrace(ApplifierMarmalade, ("Could not show More Games, isFeaturedGamesReady: %i", isFeaturedGamesReady));
-        }
-			
-    }
-	
-	//show interstitial
-    void OnClickInterstitial(CIwUIElement*)
-    {
-		if (ApplifierCrossPromotionAvailable() && ApplifierCrossPromotionIsInterstitialReady()) {
-            bool showInterstitial = ApplifierCrossPromotionShowInterstitial();
-            if (!showInterstitial)
-                IwTrace(ApplifierMarmalade, ("Could not show Interstitial, showInterstitial: %i", showInterstitial));
-        }
-        else {
-            bool crossPromotionAvailable = ApplifierCrossPromotionAvailable();
-            bool interstitialReady = ApplifierCrossPromotionIsInterstitialReady();
-            IwTrace(ApplifierMarmalade, ("Could not show Interstitial, crossPromotionAvailable: %i, interstitialReady: %i", crossPromotionAvailable, interstitialReady));
-        }
-			
-    }
+		
     //prepare featured games
     void OnClickPrepareFeaturedGames(CIwUIElement*)
     {
-		if (ApplifierCrossPromotionAvailable()) {
+	if (ApplifierCrossPromotionAvailable()) {
             bool result = ApplifierCrossPromotionPrepareFeaturedGames();
             if (!result)
                 IwTrace(ApplifierMarmalade, ("Could not start preparing More Games: %i", result));
         }			
     }
 	
-	//prepare interstitial
+    //show featured games
+    void OnClickFeaturedGames(CIwUIElement*)
+    {
+	if (ApplifierCrossPromotionAvailable()) {
+            bool showFeaturedGames = ApplifierCrossPromotionShowFeaturedGames();            
+            if (!showFeaturedGames)
+                IwTrace(ApplifierMarmalade, ("Could not show More Games for some reason: %i", showFeaturedGames));
+        }
+        else {
+            bool crossPromotionAvailable = ApplifierCrossPromotionAvailable();
+            IwTrace(ApplifierMarmalade, ("Could not show More Games, crossPromotionAvailable: %i", crossPromotionAvailable));
+        }
+			
+    }
+	
+    //show interstitial
+    void OnClickInterstitial(CIwUIElement*)
+    {
+	if (ApplifierCrossPromotionAvailable()) {
+            bool showInterstitial = ApplifierCrossPromotionShowInterstitial();
+            if (!showInterstitial)
+                IwTrace(ApplifierMarmalade, ("Could not show Interstitial, showInterstitial: %i", showInterstitial));
+        }
+        else {
+            bool crossPromotionAvailable = ApplifierCrossPromotionAvailable();
+            IwTrace(ApplifierMarmalade, ("Could not show Interstitial, crossPromotionAvailable: %i", crossPromotionAvailable));
+        }
+			
+    }
+
+    //prepare interstitial
     void OnClickPrepareInterstitial(CIwUIElement*)
     {
-		if (ApplifierCrossPromotionAvailable()) {
+	if (ApplifierCrossPromotionAvailable()) {
             bool result = ApplifierCrossPromotionPrepareInterstitial();
             if (!result)
                 IwTrace(ApplifierMarmalade, ("Could not start preparing Interstitial: %i", result));
         }			
     }
+
+    //prepare custom interstitial
+    void OnClickPrepareCustomInterstitial(CIwUIElement*)
+    {
+	if (ApplifierCrossPromotionAvailable()) {
+            bool result = ApplifierCrossPromotionPrepareCustomInterstitial();
+            if (!result)
+                IwTrace(ApplifierMarmalade, ("Could not start preparing Custom Interstitial: %i", result));
+        }			
+    }
+ 
+    //show custom interstitial
+    void OnClickCustomInterstitial(CIwUIElement*)
+    {
+	if (ApplifierCrossPromotionAvailable()) {
+            bool showCustomInterstitial = ApplifierCrossPromotionShowCustomInterstitial();
+            if (!showCustomInterstitial)
+                IwTrace(ApplifierMarmalade, ("Could not show Custom Interstitial, showCustomInterstitial: %i", showCustomInterstitial));
+        }
+        else {
+            bool crossPromotionAvailable = ApplifierCrossPromotionAvailable();
+            IwTrace(ApplifierMarmalade, ("Could not show Custom Interstitial, crossPromotionAvailable: %i", crossPromotionAvailable));
+        }
+    }
+
+    //show animated
+    void OnClickAnimated(CIwUIElement*)
+    {
+	if (ApplifierCrossPromotionAvailable()) {
+            bool showAnimated = ApplifierCrossPromotionShowAnimated(0);
+            if (!showAnimated)
+                IwTrace(ApplifierMarmalade, ("Could not show Animated, showAnimated: %i", showAnimated));
+        }
+        else {
+            bool crossPromotionAvailable = ApplifierCrossPromotionAvailable();
+            IwTrace(ApplifierMarmalade, ("Could not show Animated, crossPromotionAvailable: %i", crossPromotionAvailable));
+        }
+    }
 	
+    //prepare animated
+    void OnClickPrepareAnimated(CIwUIElement*)
+    {
+	if (ApplifierCrossPromotionAvailable()) {
+            bool result = ApplifierCrossPromotionPrepareAnimated(0);
+            if (!result)
+                IwTrace(ApplifierMarmalade, ("Could not start preparing Animated: %i", result));
+        }			
+    }	
 };
 
 class CPointerWatcher : public IIwUIEventHandler
@@ -177,6 +229,7 @@ class CPointerWatcher : public IIwUIEventHandler
                              pClick->GetPos().x, pClick->GetPos().y));           
 
             }
+	/*
             else if (pEvent->GetID() == IWUI_EVENT_POINTER_MOVE)
             {
                 CIwUIEventPointerMove* pMove = IwSafeCast<CIwUIEventPointerMove*>(pEvent);
@@ -186,7 +239,7 @@ class CPointerWatcher : public IIwUIEventHandler
                 if (ApplifierCrossPromotionAvailable())
                     ApplifierCrossPromotionMoveBanner(pMove->GetPos().x, pMove->GetPos().y);
             }
-		
+	*/
             return false;
         }
 	
@@ -229,11 +282,17 @@ void ExampleInit()
     IwGetUIView()->AddElement(pDialog);
     IwGetUIView()->AddElementToLayout(pDialog);
 	
-	IwGetUIController()->AddEventHandler(new CPointerWatcher);
+    IwGetUIController()->AddEventHandler(new CPointerWatcher);
+
+    // TODO: Create a way to separate between iOS and Android
+    std::string applifierId = "kfhkgfcngglodlemjhgggggm";
+
+    if (strcmp(ApplifierCrossPromotionGetPlatform(),"Android") == 0)
+	applifierId = "pogcgbkedfbbjghagggggggg";
 	
-	if (ApplifierCrossPromotionAvailable()) {
-		ApplifierCrossPromotionInitialize("asdf", true, true, true, true);
-	}
+    if (ApplifierCrossPromotionAvailable()) {
+	ApplifierCrossPromotionInitialize(applifierId.c_str(), true, true, true, true);
+    }
 	
 }
 //-----------------------------------------------------------------------------

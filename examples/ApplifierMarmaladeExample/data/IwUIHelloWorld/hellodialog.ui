@@ -1,131 +1,187 @@
-CIwUIElement 
+CIwUIElement
 {
 	name "Vertical"
-	pos  { 0 162 }
-	size  { 320 155 }
 	sizeToContent true
-	CIwUILabel 
-	{
-		name "Label"
-		pos  { 99 0 }
-		size  { 122 20 }
-		style <label_large>
-		caption "Applifier tests"
-	}
-	CIwUIButton 
-	{
-		name "ButtonMoreGames"
-		pos  { 0 20 }
-		size  { 320 58 }
-		style <button>
-		sizeMax  { 120 37 }
-		caption "More games"
-		alignH "centre"
-		OnButtonClick { "OnClickFeaturedGames" }
+	
+	CIwUILabel
+        {
+                name "Label"
+                pos  { 0 0 }
+                size  { 122 20 }
+                style <label_large>
+                caption "Applifier Tests"
+        }
+	CIwUIButton
+        {
+                name "ButtonBanner"
+                pos  { 0 20 }
+                size  { 320 58 }
+                style <button>
+                sizeMax  { 120 37 }
+                caption "Banner"
+                alignH "centre"
+                OnButtonClick { "OnClickBanner" }
 
-	}
-	CIwUIButton 
-	{
-		name "ButtonInterstitial"
-		pos  { 0 20 }
-		size  { 320 58 }
-		style <button>
-		sizeMax  { 120 37 }
-		caption "Interstitial"
-		alignH "centre"
-		OnButtonClick { "OnClickInterstitial" }
-
-	}
-	CIwUIButton 
+        }
+        CIwUIButton
+        {
+                name "ButtonHideBanner"
+                pos  { 0 20 }
+                size  { 320 58 }
+                style <button>
+                sizeMax  { 120 37 }
+                caption "Hide View"
+                alignH "centre"
+                OnButtonClick { "OnClickHideBanner" }
+        }
+        CIwUIButton
+        {
+                name "ButtonMoreGames"
+                pos  { 0 0 }
+                size  { 320 58 }
+                style <button>
+                sizeMax  { 120 37 }
+                caption "More Games"
+                OnButtonClick { "OnClickFeaturedGames" }
+        }
+	CIwUIButton
 	{
 		name "ButtonPrepareMoreGames"
-		pos  { 0 20 }
-		size  { 320 58 }
-		style <button>
-		sizeMax  { 120 37 }
-		caption "Prepare More games"
-		alignH "centre"
-		OnButtonClick { "OnClickPrepareFeaturedGames" }
+                pos  { 0 0 }
+                size  { 320 58 }
+                style <button>
+                sizeMax  { 120 37 }
+                caption "Prepare More Games"
+                OnButtonClick { "OnClickPrepareFeaturedGames" }
+        }
 
-	}
-	CIwUIButton 
-	{
-		name "ButtonPrepareInterstitial"
-		pos  { 0 20 }
-		size  { 320 58 }
-		style <button>
-		sizeMax  { 120 37 }
-		caption "Prepare Interstitial"
-		alignH "centre"
-		OnButtonClick { "OnClickPrepareInterstitial" }
+        CIwUIButton
+        {
+                name "ButtonPrepareInterstitial"
+                pos  { 0 0 }
+                size  { 320 58 }
+                style <button>
+                sizeMax  { 120 37 }
+                caption "Prepare Interstitial"
+                OnButtonClick { "OnClickPrepareInterstitial" }
+        }
+        CIwUIButton
+        {
+                name "ButtonInterstitial"
+                pos  { 0 0 }
+                size  { 320 58 }
+                style <button>
+                sizeMax  { 120 37 }
+                caption "Interstitial"
+                OnButtonClick { "OnClickInterstitial" }
+        }
 
-	}
-	CIwUIButton 
-	{
-		name "ButtonBanner"
-		pos  { 0 20 }
-		size  { 320 58 }
-		style <button>
-		sizeMax  { 120 37 }
-		caption "Banner"
-		alignH "centre"
-		OnButtonClick { "OnClickBanner" }
+        CIwUIButton
+        {
+                name "ButtonPrepareCustomInterstitial"
+                pos  { 0 0 }
+                size  { 320 58 }
+                style <button>
+                sizeMax  { 120 37 }
+                caption "Prepare Custom Interstitial"
+                OnButtonClick { "OnClickPrepareCustomInterstitial" }
+        }
+        CIwUIButton
+        {
+                name "ButtonCustomInterstitial"
+                pos  { 0 0 }
+                size  { 320 58 }
+                style <button>
+                sizeMax  { 120 37 }
+                caption "Custom Interstitial"
+                OnButtonClick { "OnClickCustomInterstitial" }
+        }
+        CIwUIButton
+        {
+                name "ButtonPrepareAnimated"
+                pos  { 0 0 }
+                size  { 320 58 }
+                style <button>
+                sizeMax  { 120 37 }
+                caption "Prepare Animated"
+                OnButtonClick { "OnClickPrepareAnimated" }
+        }
+        CIwUIButton
+        {
+                name "ButtonAnimated"
+                pos  { 0 0 }
+                size  { 320 58 }
+                style <button>
+                sizeMax  { 120 37 }
+                caption "Animated"
+                OnButtonClick { "OnClickAnimated" }
+        }
 
-	}
-	CIwUIButton 
-	{
-		name "ButtonHideBanner"
-		pos  { 0 20 }
-		size  { 320 58 }
-		style <button>
-		sizeMax  { 120 37 }
-		caption "Hide Banner"
+
+        CIwUILayoutVertical
+        {
 		alignH "centre"
-		OnButtonClick { "OnClickHideBanner" }
-	}
-	CIwUILayoutVertical 
-	{
-		element 
-		{
-			name "Label"
-			alignH "centre"
-			alignV "bottom"
+
+                element
+                {
+                        name "Label"
+                        alignH "centre"
+                }
+		
+	        CIwUILayoutHorizontal
+        	{
+			element
+                	{
+	                        name "ButtonHideBanner"
+			}
+			element
+                	{
+	                        name "ButtonBanner"
+			}
 		}
-		element 
-		{
-			name "ButtonPrepareMoreGames"
-			alignH "centre"
-			alignV "bottom"
+	        CIwUILayoutHorizontal
+        	{
+			element
+                	{
+	                        name "ButtonPrepareMoreGames"
+			}
+			element
+                	{
+	                        name "ButtonMoreGames"
+			}
 		}
-		element 
-		{
-			name "ButtonPrepareInterstitial"
-			alignH "centre"
-			alignV "bottom"
+	        CIwUILayoutHorizontal
+        	{
+			element
+                	{
+	                        name "ButtonPrepareInterstitial"
+			}
+			element
+			{
+				name "ButtonInterstitial"
+			}
 		}
-		element 
-		{
-			name "ButtonMoreGames"
-			alignH "centre"
-			alignV "bottom"
+	        CIwUILayoutHorizontal
+        	{
+			element
+                	{
+	                        name "ButtonPrepareCustomInterstitial"
+			}
+			element
+			{
+				name "ButtonCustomInterstitial"
+			}
 		}
-		element 
-		{
-			name "ButtonInterstitial"
-			alignH "centre"
-			alignV "bottom"
-		}
-		element 
-		{
-			name "ButtonBanner"
-			alignH "centre"
-			alignV "bottom"
-		}
-		element 
-		{
-			name "ButtonHideBanner"
-			alignH "centre"
-			alignV "bottom"
+	        CIwUILayoutHorizontal
+        	{
+			element
+                	{
+	                        name "ButtonPrepareAnimated"
+			}
+			element
+			{
+				name "ButtonAnimated"
+			}
 		}
 	}
 }
