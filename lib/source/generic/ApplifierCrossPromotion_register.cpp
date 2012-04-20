@@ -90,6 +90,42 @@ static bool ApplifierCrossPromotionMoveBanner_wrap(int x, int y)
     return (bool)(intptr_t)s3eEdkThreadRunOnOS((s3eEdkThreadFunc)ApplifierCrossPromotionMoveBanner, 2, x, y);
 }
 
+static bool ApplifierCrossPromotionShowCustomInterstitial_wrap()
+{
+    IwTrace(APPLIFIERCROSSPROMOTION_VERBOSE, ("calling ApplifierCrossPromotion func on main thread: ApplifierCrossPromotionShowCustomInterstitial"));
+    return (bool)(intptr_t)s3eEdkThreadRunOnOS((s3eEdkThreadFunc)ApplifierCrossPromotionShowCustomInterstitial, 0);
+}
+
+static bool ApplifierCrossPromotionPrepareCustomInterstitial_wrap()
+{
+    IwTrace(APPLIFIERCROSSPROMOTION_VERBOSE, ("calling ApplifierCrossPromotion func on main thread: ApplifierCrossPromotionPrepareCustomInterstitial"));
+    return (bool)(intptr_t)s3eEdkThreadRunOnOS((s3eEdkThreadFunc)ApplifierCrossPromotionPrepareCustomInterstitial, 0);
+}
+
+static bool ApplifierCrossPromotionIsCustomInterstitialReady_wrap()
+{
+    IwTrace(APPLIFIERCROSSPROMOTION_VERBOSE, ("calling ApplifierCrossPromotion func on main thread: ApplifierCrossPromotionIsCustomInterstitialReady"));
+    return (bool)(intptr_t)s3eEdkThreadRunOnOS((s3eEdkThreadFunc)ApplifierCrossPromotionIsCustomInterstitialReady, 0);
+}
+
+static bool ApplifierCrossPromotionShowAnimated_wrap(int corner)
+{
+    IwTrace(APPLIFIERCROSSPROMOTION_VERBOSE, ("calling ApplifierCrossPromotion func on main thread: ApplifierCrossPromotionShowAnimated"));
+    return (bool)(intptr_t)s3eEdkThreadRunOnOS((s3eEdkThreadFunc)ApplifierCrossPromotionShowAnimated, 1, corner);
+}
+
+static bool ApplifierCrossPromotionPrepareAnimated_wrap(int corner)
+{
+    IwTrace(APPLIFIERCROSSPROMOTION_VERBOSE, ("calling ApplifierCrossPromotion func on main thread: ApplifierCrossPromotionPrepareAnimated"));
+    return (bool)(intptr_t)s3eEdkThreadRunOnOS((s3eEdkThreadFunc)ApplifierCrossPromotionPrepareAnimated, 1, corner);
+}
+
+static bool ApplifierCrossPromotionIsAnimatedReady_wrap()
+{
+    IwTrace(APPLIFIERCROSSPROMOTION_VERBOSE, ("calling ApplifierCrossPromotion func on main thread: ApplifierCrossPromotionIsAnimatedReady"));
+    return (bool)(intptr_t)s3eEdkThreadRunOnOS((s3eEdkThreadFunc)ApplifierCrossPromotionIsAnimatedReady, 0);
+}
+
 #define ApplifierCrossPromotionInitialize ApplifierCrossPromotionInitialize_wrap
 #define ApplifierCrossPromotionShowBanner ApplifierCrossPromotionShowBanner_wrap
 #define ApplifierCrossPromotionHideBanner ApplifierCrossPromotionHideBanner_wrap
@@ -101,13 +137,19 @@ static bool ApplifierCrossPromotionMoveBanner_wrap(int x, int y)
 #define ApplifierCrossPromotionShowInterstitial ApplifierCrossPromotionShowInterstitial_wrap
 #define ApplifierCrossPromotionPauseRenderer ApplifierCrossPromotionPauseRenderer_wrap
 #define ApplifierCrossPromotionMoveBanner ApplifierCrossPromotionMoveBanner_wrap
+#define ApplifierCrossPromotionShowCustomInterstitial ApplifierCrossPromotionShowCustomInterstitial_wrap
+#define ApplifierCrossPromotionPrepareCustomInterstitial ApplifierCrossPromotionPrepareCustomInterstitial_wrap
+#define ApplifierCrossPromotionIsCustomInterstitialReady ApplifierCrossPromotionIsCustomInterstitialReady_wrap
+#define ApplifierCrossPromotionShowAnimated ApplifierCrossPromotionShowAnimated_wrap
+#define ApplifierCrossPromotionPrepareAnimated ApplifierCrossPromotionPrepareAnimated_wrap
+#define ApplifierCrossPromotionIsAnimatedReady ApplifierCrossPromotionIsAnimatedReady_wrap
 
 #endif
 
 void ApplifierCrossPromotionRegisterExt()
 {
     /* fill in the function pointer struct for this extension */
-    void* funcPtrs[11];
+    void* funcPtrs[18];
     funcPtrs[0] = (void*)ApplifierCrossPromotionInitialize;
     funcPtrs[1] = (void*)ApplifierCrossPromotionShowBanner;
     funcPtrs[2] = (void*)ApplifierCrossPromotionHideBanner;
@@ -119,11 +161,18 @@ void ApplifierCrossPromotionRegisterExt()
     funcPtrs[8] = (void*)ApplifierCrossPromotionShowInterstitial;
     funcPtrs[9] = (void*)ApplifierCrossPromotionPauseRenderer;
     funcPtrs[10] = (void*)ApplifierCrossPromotionMoveBanner;
+    funcPtrs[11] = (void*)ApplifierCrossPromotionGetPlatform;
+    funcPtrs[12] = (void*)ApplifierCrossPromotionShowCustomInterstitial;
+    funcPtrs[13] = (void*)ApplifierCrossPromotionPrepareCustomInterstitial;
+    funcPtrs[14] = (void*)ApplifierCrossPromotionIsCustomInterstitialReady;
+    funcPtrs[15] = (void*)ApplifierCrossPromotionShowAnimated;
+    funcPtrs[16] = (void*)ApplifierCrossPromotionPrepareAnimated;
+    funcPtrs[17] = (void*)ApplifierCrossPromotionIsAnimatedReady;
 
     /*
      * Flags that specify the extension's use of locking and stackswitching
      */
-    int flags[11] = { 0 };
+    int flags[18] = { 0 };
 
     /*
      * Register the extension

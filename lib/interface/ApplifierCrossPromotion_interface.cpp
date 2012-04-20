@@ -22,6 +22,13 @@ typedef       bool(*ApplifierCrossPromotionShowFeaturedGames_t)();
 typedef       bool(*ApplifierCrossPromotionShowInterstitial_t)();
 typedef       bool(*ApplifierCrossPromotionPauseRenderer_t)();
 typedef       bool(*ApplifierCrossPromotionMoveBanner_t)(int x, int y);
+typedef      char*(*ApplifierCrossPromotionGetPlatform_t)();
+typedef       bool(*ApplifierCrossPromotionShowCustomInterstitial_t)();
+typedef       bool(*ApplifierCrossPromotionPrepareCustomInterstitial_t)();
+typedef       bool(*ApplifierCrossPromotionIsCustomInterstitialReady_t)();
+typedef       bool(*ApplifierCrossPromotionShowAnimated_t)(int corner);
+typedef       bool(*ApplifierCrossPromotionPrepareAnimated_t)(int corner);
+typedef       bool(*ApplifierCrossPromotionIsAnimatedReady_t)();
 
 /**
  * struct that gets filled in by ApplifierCrossPromotionRegister
@@ -39,6 +46,13 @@ typedef struct ApplifierCrossPromotionFuncs
     ApplifierCrossPromotionShowInterstitial_t m_ApplifierCrossPromotionShowInterstitial;
     ApplifierCrossPromotionPauseRenderer_t m_ApplifierCrossPromotionPauseRenderer;
     ApplifierCrossPromotionMoveBanner_t m_ApplifierCrossPromotionMoveBanner;
+    ApplifierCrossPromotionGetPlatform_t m_ApplifierCrossPromotionGetPlatform;
+    ApplifierCrossPromotionShowCustomInterstitial_t m_ApplifierCrossPromotionShowCustomInterstitial;
+    ApplifierCrossPromotionPrepareCustomInterstitial_t m_ApplifierCrossPromotionPrepareCustomInterstitial;
+    ApplifierCrossPromotionIsCustomInterstitialReady_t m_ApplifierCrossPromotionIsCustomInterstitialReady;
+    ApplifierCrossPromotionShowAnimated_t m_ApplifierCrossPromotionShowAnimated;
+    ApplifierCrossPromotionPrepareAnimated_t m_ApplifierCrossPromotionPrepareAnimated;
+    ApplifierCrossPromotionIsAnimatedReady_t m_ApplifierCrossPromotionIsAnimatedReady;
 } ApplifierCrossPromotionFuncs;
 
 static ApplifierCrossPromotionFuncs g_Ext;
@@ -191,4 +205,74 @@ bool ApplifierCrossPromotionMoveBanner(int x, int y)
         return false;
 
     return g_Ext.m_ApplifierCrossPromotionMoveBanner(x, y);
+}
+
+char* ApplifierCrossPromotionGetPlatform()
+{
+    IwTrace(APPLIFIERCROSSPROMOTION_VERBOSE, ("calling ApplifierCrossPromotion[11] func: ApplifierCrossPromotionGetPlatform"));
+
+    if (!_extLoad())
+        return false;
+
+    return g_Ext.m_ApplifierCrossPromotionGetPlatform();
+}
+
+bool ApplifierCrossPromotionShowCustomInterstitial()
+{
+    IwTrace(APPLIFIERCROSSPROMOTION_VERBOSE, ("calling ApplifierCrossPromotion[12] func: ApplifierCrossPromotionShowCustomInterstitial"));
+
+    if (!_extLoad())
+        return false;
+
+    return g_Ext.m_ApplifierCrossPromotionShowCustomInterstitial();
+}
+
+bool ApplifierCrossPromotionPrepareCustomInterstitial()
+{
+    IwTrace(APPLIFIERCROSSPROMOTION_VERBOSE, ("calling ApplifierCrossPromotion[13] func: ApplifierCrossPromotionPrepareCustomInterstitial"));
+
+    if (!_extLoad())
+        return false;
+
+    return g_Ext.m_ApplifierCrossPromotionPrepareCustomInterstitial();
+}
+
+bool ApplifierCrossPromotionIsCustomInterstitialReady()
+{
+    IwTrace(APPLIFIERCROSSPROMOTION_VERBOSE, ("calling ApplifierCrossPromotion[14] func: ApplifierCrossPromotionIsCustomInterstitialReady"));
+
+    if (!_extLoad())
+        return false;
+
+    return g_Ext.m_ApplifierCrossPromotionIsCustomInterstitialReady();
+}
+
+bool ApplifierCrossPromotionShowAnimated(int corner)
+{
+    IwTrace(APPLIFIERCROSSPROMOTION_VERBOSE, ("calling ApplifierCrossPromotion[15] func: ApplifierCrossPromotionShowAnimated"));
+
+    if (!_extLoad())
+        return false;
+
+    return g_Ext.m_ApplifierCrossPromotionShowAnimated(corner);
+}
+
+bool ApplifierCrossPromotionPrepareAnimated(int corner)
+{
+    IwTrace(APPLIFIERCROSSPROMOTION_VERBOSE, ("calling ApplifierCrossPromotion[16] func: ApplifierCrossPromotionPrepareAnimated"));
+
+    if (!_extLoad())
+        return false;
+
+    return g_Ext.m_ApplifierCrossPromotionPrepareAnimated(corner);
+}
+
+bool ApplifierCrossPromotionIsAnimatedReady()
+{
+    IwTrace(APPLIFIERCROSSPROMOTION_VERBOSE, ("calling ApplifierCrossPromotion[17] func: ApplifierCrossPromotionIsAnimatedReady"));
+
+    if (!_extLoad())
+        return false;
+
+    return g_Ext.m_ApplifierCrossPromotionIsAnimatedReady();
 }

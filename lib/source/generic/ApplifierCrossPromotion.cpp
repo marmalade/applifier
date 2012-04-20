@@ -11,6 +11,7 @@ This file should perform any platform-indepedentent functionality
 
 
 #include "ApplifierCrossPromotion_internal.h"
+
 s3eResult ApplifierCrossPromotionInit()
 {
     //Add any generic initialisation code here
@@ -26,6 +27,11 @@ void ApplifierCrossPromotionTerminate()
 s3eResult ApplifierCrossPromotionInitialize(const char* applifierID, bool orientationHomeButtonDown, bool orientationHomeButtonRight, bool orientationHomeButtonLeft, bool orientationHomeButtonUp)
 {
 	return ApplifierCrossPromotionInitialize_platform(applifierID, orientationHomeButtonDown, orientationHomeButtonRight, orientationHomeButtonLeft, orientationHomeButtonUp);
+}
+
+char* ApplifierCrossPromotionGetPlatform()
+{
+	return ApplifierCrossPromotionGetPlatform_platform();
 }
 
 bool ApplifierCrossPromotionShowBanner(int positionX, int positionY)
@@ -77,3 +83,34 @@ bool ApplifierCrossPromotionPauseRenderer()
 {
 	return ApplifierCrossPromotionPauseRenderer_platform();
 }
+
+bool ApplifierCrossPromotionShowCustomInterstitial()
+{
+	return ApplifierCrossPromotionShowCustomInterstitial_platform();
+}
+
+bool ApplifierCrossPromotionPrepareCustomInterstitial()
+{
+	return ApplifierCrossPromotionPrepareCustomInterstitial_platform();
+}
+
+bool ApplifierCrossPromotionIsCustomInterstitialReady()
+{
+	return ApplifierCrossPromotionIsCustomInterstitialReady_platform();
+}
+
+bool ApplifierCrossPromotionShowAnimated(int corner)
+{
+	return ApplifierCrossPromotionShowAnimated_platform(corner);
+}
+
+bool ApplifierCrossPromotionPrepareAnimated(int corner)
+{
+	return ApplifierCrossPromotionPrepareAnimated_platform(corner);
+}
+
+bool ApplifierCrossPromotionIsAnimatedReady()
+{
+	return ApplifierCrossPromotionIsAnimatedReady_platform();
+}
+

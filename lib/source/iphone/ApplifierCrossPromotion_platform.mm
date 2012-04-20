@@ -23,14 +23,14 @@
 }
 - (void)applifierInterstitialReady {	
 }
+- (void)applifierAnimatedReady {
+}
 - (void)pauseGame {
 }
 - (void)resumeGame {
-
 }
 
 @end
-
 
 
 s3eResult ApplifierCrossPromotionInit_platform()
@@ -88,15 +88,38 @@ s3eResult ApplifierCrossPromotionInitialize_platform(const char* applifierId, bo
     return S3E_RESULT_SUCCESS;
 }
 
+AFCornerPosition _getCornerFromInt(int corner) {
+  AFCornerPosition cornerPos = AFCornerBottomLeft;
 
+  switch (corner) {
+    case 0:
+      cornerPos = AFCornerTopLeft;
+      break;
+    case 1:
+      cornerPos = AFCornerTopRight;
+      break;
+    case 2:
+      cornerPos = AFCornerBottomRight;
+      break;
+    case 3:
+      cornerPos = AFCornerBottomLeft;
+      break;
+  }
+  return cornerPos;
+}
+
+char* ApplifierCrossPromotionGetPlatform_platform() {
+    char* platform = "iOS";
+    return platform;
+}
 
 bool ApplifierCrossPromotionShowBanner_platform(int positionX, int positionY) {
 	[[Applifier sharedInstance] showBannerAt:CGPointMake(positionX, positionY)];	
     return true;
 }
 
-bool ApplifierCrossPromotionMoveBanner_platform(int x, int y) {
-	[[Applifier sharedInstance] moveBanner:CGPointMake(x, y)];	
+bool ApplifierCrossPromotionMoveBanner_platform(int x, int y) {	
+    [[Applifier sharedInstance] moveBanner:CGPointMake(x, y)];	
     return true;
 }
 
@@ -115,34 +138,52 @@ bool ApplifierCrossPromotionPrepareInterstitial_platform() {
     return true;
 }
 
+bool ApplifierCrossPromotionPrepareCustomInterstitial_platform() {
+	[[Applifier sharedInstance] prepareCustomInterstitial];	
+    return true;
+}
+
+bool ApplifierCrossPromotionPrepareAnimated_platform(int corner) {
+    AFCornerPosition cornerPos = _getCornerFromInt(corner);
+	[[Applifier sharedInstance] prepareAnimatedAtCorner:cornerPos];	
+    return true;
+}
+
 bool ApplifierCrossPromotionIsFeaturedGamesReady_platform() {
-	return [Applifier sharedInstance].featuredGamesReady;
+	return [[Applifier sharedInstance] isViewReady:AFViewFeaturedGames];
 }
 
 bool ApplifierCrossPromotionIsInterstitialReady_platform() {
-	return [Applifier sharedInstance].interstitialReady;
+	return [[Applifier sharedInstance] isViewReady:AFViewInterstitial];
 }
 
+bool ApplifierCrossPromotionIsCustomInterstitialReady_platform() {
+	return [[Applifier sharedInstance] isViewReady:AFViewCustomInterstitial];
+}
+
+bool ApplifierCrossPromotionIsAnimatedReady_platform() {
+	return [[Applifier sharedInstance] isViewReady:AFViewAnimated];
+}
 
 bool ApplifierCrossPromotionShowFeaturedGames_platform() {
-	if ([Applifier sharedInstance].featuredGamesReady) {
-		[[Applifier sharedInstance] showFeaturedGames];	
-		return true;
-	}
-	else {
-		return false;
-	}
+	[[Applifier sharedInstance] showFeaturedGames];	
+	return true;
 }
 
 bool ApplifierCrossPromotionShowInterstitial_platform() {
-	if ([Applifier sharedInstance].interstitialReady) {
-		[[Applifier sharedInstance] showInterstitial];
-		return true;
-	}
-	else {
-		return false;
+	[[Applifier sharedInstance] showInterstitial];
+	return true;
+}
 
-	}
+bool ApplifierCrossPromotionShowCustomInterstitial_platform() {
+	[[Applifier sharedInstance] showCustomInterstitial];
+	return true;
+}
+
+bool ApplifierCrossPromotionShowAnimated_platform(int corner) {
+	AFCornerPosition cornerPos = _getCornerFromInt(corner);
+	[[Applifier sharedInstance] showAnimatedAtCorner:cornerPos];
+	return true;
 }
 
 bool ApplifierCrossPromotionPauseRenderer_platform() {

@@ -64,4 +64,18 @@ bool ApplifierCrossPromotionShowInterstitial_platform();
 
 bool ApplifierCrossPromotionPauseRenderer_platform();
 
+bool ApplifierCrossPromotionShowCustomInterstitial_platform();
+
+bool ApplifierCrossPromotionPrepareCustomInterstitial_platform();
+
+bool ApplifierCrossPromotionIsCustomInterstitialReady_platform();
+
+bool ApplifierCrossPromotionShowAnimated_platform(int corner);
+
+bool ApplifierCrossPromotionPrepareAnimated_platform(int corner);
+
+bool ApplifierCrossPromotionIsAnimatedReady_platform();
+
+char* ApplifierCrossPromotionGetPlatform_platform();
+
 #endif /* APPLIFIERCROSSPROMOTION_H_INTERNAL */

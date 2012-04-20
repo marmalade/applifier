@@ -13,3 +13,13 @@ bool ApplifierCrossPromotionShowFeaturedGames() false run_on_os_thread
 bool ApplifierCrossPromotionShowInterstitial() false run_on_os_thread
 bool ApplifierCrossPromotionPauseRenderer() false run_on_os_thread
 bool ApplifierCrossPromotionMoveBanner(int x, int y) false run_on_os_thread
+char* ApplifierCrossPromotionGetPlatform() false
+
+bool ApplifierCrossPromotionShowCustomInterstitial() false run_on_os_thread
+bool ApplifierCrossPromotionPrepareCustomInterstitial() false run_on_os_thread
+bool ApplifierCrossPromotionIsCustomInterstitialReady() false run_on_os_thread
+
+bool ApplifierCrossPromotionShowAnimated(int corner) false run_on_os_thread
+bool ApplifierCrossPromotionPrepareAnimated(int corner) false run_on_os_thread
+bool ApplifierCrossPromotionIsAnimatedReady() false run_on_os_thread
+

@@ -48,6 +48,20 @@ bool ApplifierCrossPromotionPauseRenderer();
 
 bool ApplifierCrossPromotionMoveBanner(int x, int y);
 
+char* ApplifierCrossPromotionGetPlatform();
+
+bool ApplifierCrossPromotionShowCustomInterstitial();
+
+bool ApplifierCrossPromotionPrepareCustomInterstitial();
+
+bool ApplifierCrossPromotionIsCustomInterstitialReady();
+
+bool ApplifierCrossPromotionShowAnimated(int corner);
+
+bool ApplifierCrossPromotionPrepareAnimated(int corner);
+
+bool ApplifierCrossPromotionIsAnimatedReady();
+
 S3E_END_C_DECL
 
 #endif /* !S3E_EXT_APPLIFIERCROSSPROMOTION_H */

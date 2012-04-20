@@ -20,10 +20,16 @@ static jmethodID g_moveBanner;
 static jmethodID g_hideBanner;
 static jmethodID g_prepareFeaturedGames;
 static jmethodID g_prepareInterstitial;
+static jmethodID g_prepareCustomInterstitial;
+static jmethodID g_prepareAnimated;
 static jmethodID g_isFeaturedGamesReady;
 static jmethodID g_isInterstitialReady;
+static jmethodID g_isCustomInterstitialReady;
+static jmethodID g_isAnimatedReady;
 static jmethodID g_showFeaturedGames;
 static jmethodID g_showInterstitial;
+static jmethodID g_showCustomInterstitial;
+static jmethodID g_showAnimated;
 static jmethodID g_pauseRenderer;
 
 s3eResult ApplifierCrossPromotionInit_platform()
@@ -73,6 +79,14 @@ s3eResult ApplifierCrossPromotionInit_platform()
     if (!g_prepareInterstitial)
         goto fail;
 
+    g_prepareCustomInterstitial = env->GetMethodID(cls, "prepareCustomInterstitial", "()Z");
+    if (!g_prepareCustomInterstitial)
+        goto fail;
+
+    g_prepareAnimated = env->GetMethodID(cls, "prepareAnimated", "(I)Z");
+    if (!g_prepareAnimated)
+        goto fail;
+
     g_isFeaturedGamesReady = env->GetMethodID(cls, "isFeaturedGamesReady", "()Z");
     if (!g_isFeaturedGamesReady)
         goto fail;
@@ -81,12 +95,28 @@ s3eResult ApplifierCrossPromotionInit_platform()
     if (!g_isInterstitialReady)
         goto fail;
 
+    g_isCustomInterstitialReady = env->GetMethodID(cls, "isCustomInterstitialReady", "()Z");
+    if (!g_isCustomInterstitialReady)
+        goto fail;
+
+    g_isAnimatedReady = env->GetMethodID(cls, "isAnimatedReady", "()Z");
+    if (!g_isAnimatedReady)
+        goto fail;
+
     g_showFeaturedGames = env->GetMethodID(cls, "showFeaturedGames", "()Z");
     if (!g_showFeaturedGames)
         goto fail;
 
     g_showInterstitial = env->GetMethodID(cls, "showInterstitial", "()Z");
     if (!g_showInterstitial)
+        goto fail;
+
+    g_showCustomInterstitial = env->GetMethodID(cls, "showCustomInterstitial", "()Z");
+    if (!g_showCustomInterstitial)
+        goto fail;
+
+    g_showAnimated = env->GetMethodID(cls, "showAnimated", "(I)Z");
+    if (!g_showAnimated)
         goto fail;
 
     g_pauseRenderer = env->GetMethodID(cls, "pauseRenderer", "()Z");
@@ -127,6 +157,12 @@ s3eResult ApplifierCrossPromotionInitialize_platform(const char* applifierID, bo
     return (s3eResult)env->CallIntMethod(g_Obj, g_init, applifierID_jstr, orientationHomeButtonDown, orientationHomeButtonRight, orientationHomeButtonLeft, orientationHomeButtonUp);
 }
 
+char* ApplifierCrossPromotionGetPlatform_platform()
+{   
+    char* platform = "Android";   
+    return platform;
+}
+
 bool ApplifierCrossPromotionShowBanner_platform(int positionX, int positionY)
 {
     JNIEnv* env = s3eEdkJNIGetEnv();
@@ -157,6 +193,18 @@ bool ApplifierCrossPromotionPrepareInterstitial_platform()
     return (bool)env->CallBooleanMethod(g_Obj, g_prepareInterstitial);
 }
 
+bool ApplifierCrossPromotionPrepareCustomInterstitial_platform()
+{
+    JNIEnv* env = s3eEdkJNIGetEnv();
+    return (bool)env->CallBooleanMethod(g_Obj, g_prepareCustomInterstitial);
+}
+
+bool ApplifierCrossPromotionPrepareAnimated_platform(int corner)
+{
+    JNIEnv* env = s3eEdkJNIGetEnv();
+    return (bool)env->CallBooleanMethod(g_Obj, g_prepareAnimated, corner);
+}
+
 bool ApplifierCrossPromotionIsFeaturedGamesReady_platform()
 {
     JNIEnv* env = s3eEdkJNIGetEnv();
@@ -169,6 +217,18 @@ bool ApplifierCrossPromotionIsInterstitialReady_platform()
     return (bool)env->CallBooleanMethod(g_Obj, g_isInterstitialReady);
 }
 
+bool ApplifierCrossPromotionIsCustomInterstitialReady_platform()
+{
+    JNIEnv* env = s3eEdkJNIGetEnv();
+    return (bool)env->CallBooleanMethod(g_Obj, g_isCustomInterstitialReady);
+}
+
+bool ApplifierCrossPromotionIsAnimatedReady_platform()
+{
+    JNIEnv* env = s3eEdkJNIGetEnv();
+    return (bool)env->CallBooleanMethod(g_Obj, g_isAnimatedReady);
+}
+
 bool ApplifierCrossPromotionShowFeaturedGames_platform()
 {
     JNIEnv* env = s3eEdkJNIGetEnv();
@@ -179,6 +239,18 @@ bool ApplifierCrossPromotionShowInterstitial_platform()
 {
     JNIEnv* env = s3eEdkJNIGetEnv();
     return (bool)env->CallBooleanMethod(g_Obj, g_showInterstitial);
+}
+
+bool ApplifierCrossPromotionShowCustomInterstitial_platform()
+{
+    JNIEnv* env = s3eEdkJNIGetEnv();
+    return (bool)env->CallBooleanMethod(g_Obj, g_showCustomInterstitial);
+}
+
+bool ApplifierCrossPromotionShowAnimated_platform(int corner)
+{
+    JNIEnv* env = s3eEdkJNIGetEnv();
+    return (bool)env->CallBooleanMethod(g_Obj, g_showAnimated, corner);
 }
 
 bool ApplifierCrossPromotionPauseRenderer_platform()
