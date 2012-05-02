@@ -1,0 +1,438 @@
+Archive member included because of file (symbol)
+
+/Developer/Marmalade/6.0/s3e/edk/lib/android/libedk.a(edk_helpers.o)
+                              release/ApplifierCrossPromotion_platform.os (s3eEdkThreadRunOnOS)
+
+Discarded input sections
+
+ _ZN7_JNIEnv11GetMethodIDEP7_jclassPKcS3_
+                0x00000000        0x0 release/ApplifierCrossPromotion_platform.os
+ _ZN7_JNIEnv17CallBooleanMethodEP8_jobjectP10_jmethodIDz
+                0x00000000        0x0 release/ApplifierCrossPromotion_platform.os
+ _ZN7_JNIEnv13CallIntMethodEP8_jobjectP10_jmethodIDz
+                0x00000000        0x0 release/ApplifierCrossPromotion_platform.os
+ _ZN7_JNIEnv9NewObjectEP7_jclassP10_jmethodIDz
+                0x00000000        0x0 release/ApplifierCrossPromotion_platform.os
+ .note.GNU-stack
+                0x00000000        0x0 release/ApplifierCrossPromotion_platform.os
+ .note.GNU-stack
+                0x00000000        0x0 release/ApplifierCrossPromotion.os
+ .note.GNU-stack
+                0x00000000        0x0 release/ApplifierCrossPromotion_register.os
+ .note.GNU-stack
+                0x00000000        0x0 /Developer/Marmalade/6.0/s3e/edk/lib/android/libedk.a(edk_helpers.o)
+
+Memory Configuration
+
+Name             Origin             Length             Attributes
+*default*        0x00000000         0xffffffff
+
+Linker script and memory map
+
+LOAD release/ApplifierCrossPromotion_platform.os
+LOAD release/ApplifierCrossPromotion.os
+LOAD release/ApplifierCrossPromotion_register.os
+LOAD /Developer/Marmalade/6.0/s3e/edk/lib/android/libedk.a
+LOAD /Developer/Marmalade/6.0/s3e/edk/lib/android/libplaceholderplaceholderplaceholderplaceholderplaceholder.so
+LOAD /Users/bluesun/Library/Android/android-ndk-r7b/platforms/android-9/arch-arm/usr/lib/libc.so
+LOAD /Users/bluesun/Library/Android/android-ndk-r7b/platforms/android-9/arch-arm/usr/lib/libm.so
+LOAD /Users/bluesun/Library/Android/android-ndk-r7b/platforms/android-9/arch-arm/usr/lib/liblog.so
+LOAD /Users/bluesun/Library/Android/android-ndk-r7b/platforms/android-9/arch-arm/usr/lib/libstdc++.so
+LOAD /Users/bluesun/Library/Android/android-ndk-r7b/toolchains/arm-linux-androideabi-4.4.3/prebuilt/darwin-x86/bin/../lib/gcc/arm-linux-androideabi/4.4.3/libgcc.a
+                0x000000d4                . = (0x0 + SIZEOF_HEADERS)
+
+.note.gnu.build-id
+ *(.note.gnu.build-id)
+
+.hash           0x000000d4       0xa0
+ *(.hash)
+ .hash          0x000000d4       0xa0 release/ApplifierCrossPromotion_platform.os
+
+.gnu.hash
+ *(.gnu.hash)
+
+.dynsym         0x00000174      0x150
+ *(.dynsym)
+ .dynsym        0x00000174      0x150 release/ApplifierCrossPromotion_platform.os
+
+.dynstr         0x000002c4      0x14f
+ *(.dynstr)
+ .dynstr        0x000002c4      0x14f release/ApplifierCrossPromotion_platform.os
+
+.gnu.version    0x00000414        0x0 load address 0x00000413
+ *(.gnu.version)
+ .gnu.version   0x00000000        0x0 release/ApplifierCrossPromotion_platform.os
+
+.gnu.version_d  0x00000414        0x0 load address 0x00000413
+ *(.gnu.version_d)
+ .gnu.version_d
+                0x00000000        0x0 release/ApplifierCrossPromotion_platform.os
+
+.gnu.version_r  0x00000414        0x0 load address 0x00000413
+ *(.gnu.version_r)
+ .gnu.version_r
+                0x00000000        0x0 release/ApplifierCrossPromotion_platform.os
+
+.rel.dyn        0x00000414       0xa0
+ *(.rel.init)
+ *(.rel.text .rel.text.* .rel.gnu.linkonce.t.*)
+ *(.rel.fini)
+ *(.rel.rodata .rel.rodata.* .rel.gnu.linkonce.r.*)
+ *(.rel.data.rel.ro* .rel.gnu.linkonce.d.rel.ro.*)
+ *(.rel.data .rel.data.* .rel.gnu.linkonce.d.*)
+ *(.rel.tdata .rel.tdata.* .rel.gnu.linkonce.td.*)
+ *(.rel.tbss .rel.tbss.* .rel.gnu.linkonce.tb.*)
+ *(.rel.ctors)
+ *(.rel.dtors)
+ *(.rel.got)
+ .rel.got       0x00000414       0xa0 release/ApplifierCrossPromotion_platform.os
+ *(.rel.bss .rel.bss.* .rel.gnu.linkonce.b.*)
+
+.rela.dyn
+ *(.rela.init)
+ *(.rela.text .rela.text.* .rela.gnu.linkonce.t.*)
+ *(.rela.fini)
+ *(.rela.rodata .rela.rodata.* .rela.gnu.linkonce.r.*)
+ *(.rela.data .rela.data.* .rela.gnu.linkonce.d.*)
+ *(.rela.tdata .rela.tdata.* .rela.gnu.linkonce.td.*)
+ *(.rela.tbss .rela.tbss.* .rela.gnu.linkonce.tb.*)
+ *(.rela.ctors)
+ *(.rela.dtors)
+ *(.rela.got)
+ *(.rela.bss .rela.bss.* .rela.gnu.linkonce.b.*)
+
+.rel.plt        0x000004b4       0x30
+ *(.rel.plt)
+ .rel.plt       0x000004b4       0x30 release/ApplifierCrossPromotion_platform.os
+
+.rela.plt
+ *(.rela.plt)
+
+.init
+ *(.init)
+
+.plt            0x000004e4       0x5c
+ *(.plt)
+ .plt           0x000004e4       0x5c release/ApplifierCrossPromotion_platform.os
+
+.text           0x00000540     0x1564
+ *(.text .stub .text.* .gnu.linkonce.t.*)
+ .text          0x00000540      0xc04 release/ApplifierCrossPromotion_platform.os
+                0x00000984                _Z57ApplifierCrossPromotionPrepareCustomInterstitial_platformv
+                0x0000061c                _Z54ApplifierCrossPromotionShowCustomInterstitial_platformv
+                0x000009e4                _Z42ApplifierCrossPromotionHideBanner_platformv
+                0x00000a44                _Z42ApplifierCrossPromotionShowBanner_platformii
+                0x00000540                _Z41ApplifierCrossPromotionTerminate_platformv
+                0x000006dc                _Z49ApplifierCrossPromotionShowFeaturedGames_platformv
+                0x00000b84                _Z42ApplifierCrossPromotionInitialize_platformPKcbbbb
+                0x000007fc                _Z51ApplifierCrossPromotionIsInterstitialReady_platformv
+                0x00000cc0                _Z36ApplifierCrossPromotionInit_platformv
+                0x00000924                _Z51ApplifierCrossPromotionPrepareInterstitial_platformv
+                0x00000ab4                _Z52ApplifierCrossPromotionPrepareFeaturedGames_platformv
+                0x000005b4                _Z44ApplifierCrossPromotionShowAnimated_platformi
+                0x00000544                _Z43ApplifierCrossPromotionGetPlatform_platformv
+                0x0000085c                _Z52ApplifierCrossPromotionIsFeaturedGamesReady_platformv
+                0x0000079c                _Z57ApplifierCrossPromotionIsCustomInterstitialReady_platformv
+                0x000008bc                _Z47ApplifierCrossPromotionPrepareAnimated_platformi
+                0x00000554                _Z45ApplifierCrossPromotionPauseRenderer_platformv
+                0x0000073c                _Z47ApplifierCrossPromotionIsAnimatedReady_platformv
+                0x0000067c                _Z48ApplifierCrossPromotionShowInterstitial_platformv
+                0x00000b14                _Z42ApplifierCrossPromotionMoveBanner_platformii
+ .text._ZN7_JNIEnv11GetMethodIDEP7_jclassPKcS3_
+                0x00001144       0x1c release/ApplifierCrossPromotion_platform.os
+                0x00001144                _ZN7_JNIEnv11GetMethodIDEP7_jclassPKcS3_
+ .text._ZN7_JNIEnv17CallBooleanMethodEP8_jobjectP10_jmethodIDz
+                0x00001160       0x38 release/ApplifierCrossPromotion_platform.os
+                0x00001160                _ZN7_JNIEnv17CallBooleanMethodEP8_jobjectP10_jmethodIDz
+ .text._ZN7_JNIEnv13CallIntMethodEP8_jobjectP10_jmethodIDz
+                0x00001198       0x38 release/ApplifierCrossPromotion_platform.os
+                0x00001198                _ZN7_JNIEnv13CallIntMethodEP8_jobjectP10_jmethodIDz
+ .text._ZN7_JNIEnv9NewObjectEP7_jclassP10_jmethodIDz
+                0x000011d0       0x38 release/ApplifierCrossPromotion_platform.os
+                0x000011d0                _ZN7_JNIEnv9NewObjectEP7_jclassP10_jmethodIDz
+ .text          0x00001208      0x150 release/ApplifierCrossPromotion.os
+                0x00001298                ApplifierCrossPromotionIsInterstitialReady
+                0x00001348                _Z27ApplifierCrossPromotionInitv
+                0x00001208                ApplifierCrossPromotionIsAnimatedReady
+                0x00001228                ApplifierCrossPromotionShowAnimated
+                0x00001238                ApplifierCrossPromotionIsCustomInterstitialReady
+                0x00001278                ApplifierCrossPromotionShowInterstitial
+                0x00001308                ApplifierCrossPromotionGetPlatform
+                0x000012c8                ApplifierCrossPromotionPrepareFeaturedGames
+                0x000012f8                ApplifierCrossPromotionShowBanner
+                0x00001318                ApplifierCrossPromotionInitialize
+                0x00001258                ApplifierCrossPromotionShowCustomInterstitial
+                0x000012b8                ApplifierCrossPromotionPrepareInterstitial
+                0x000012a8                ApplifierCrossPromotionIsFeaturedGamesReady
+                0x00001248                ApplifierCrossPromotionPrepareCustomInterstitial
+                0x000012e8                ApplifierCrossPromotionMoveBanner
+                0x000012d8                ApplifierCrossPromotionHideBanner
+                0x00001268                ApplifierCrossPromotionPauseRenderer
+                0x00001218                ApplifierCrossPromotionPrepareAnimated
+                0x00001288                ApplifierCrossPromotionShowFeaturedGames
+                0x00001338                _Z32ApplifierCrossPromotionTerminatev
+ .text          0x00001358      0x6bc release/ApplifierCrossPromotion_register.os
+                0x00001358                _Z34ApplifierCrossPromotionRegisterExtv
+                0x00001824                RegisterExt
+ .text          0x00001a14        0x0 /Developer/Marmalade/6.0/s3e/edk/lib/android/libedk.a(edk_helpers.o)
+ .text.s3eEdkThreadRunOnOSAsync
+                0x00001a14       0x30 /Developer/Marmalade/6.0/s3e/edk/lib/android/libedk.a(edk_helpers.o)
+                0x00001a14                s3eEdkThreadRunOnOSAsync
+ .text.s3eEdkThreadRunOnOS
+                0x00001a44       0x30 /Developer/Marmalade/6.0/s3e/edk/lib/android/libedk.a(edk_helpers.o)
+                0x00001a44                s3eEdkThreadRunOnOS
+ .text.s3eEdkErrorSetString
+                0x00001a74       0x30 /Developer/Marmalade/6.0/s3e/edk/lib/android/libedk.a(edk_helpers.o)
+                0x00001a74                s3eEdkErrorSetString
+ *(.gnu.warning)
+ *(.glue_7t)
+ .glue_7t       0x00000000        0x0 linker stubs
+ *(.glue_7)
+ .glue_7        0x00000000        0x0 linker stubs
+ *(.vfp11_veneer)
+ .vfp11_veneer  0x00000000        0x0 linker stubs
+ *(.v4_bx)
+ .v4_bx         0x00000000        0x0 linker stubs
+
+.fini
+ *(.fini)
+                0x00001aa4                PROVIDE (__etext, .)
+                0x00001aa4                PROVIDE (_etext, .)
+                0x00001aa4                PROVIDE (etext, .)
+
+.rodata         0x00001aa4      0x198
+ *(.rodata .rodata.* .gnu.linkonce.r.*)
+ .rodata.str1.4
+                0x00001aa4      0x198 release/ApplifierCrossPromotion_platform.os
+ .rodata.str1.4
+                0x00000000       0x18 release/ApplifierCrossPromotion_register.os
+
+.rodata1
+ *(.rodata1)
+
+.ARM.extab      0x00001c3c       0x24
+ *(.ARM.extab* .gnu.linkonce.armextab.*)
+ .ARM.extab.text.s3eEdkThreadRunOnOSAsync
+                0x00001c3c        0xc /Developer/Marmalade/6.0/s3e/edk/lib/android/libedk.a(edk_helpers.o)
+ .ARM.extab.text.s3eEdkThreadRunOnOS
+                0x00001c48        0xc /Developer/Marmalade/6.0/s3e/edk/lib/android/libedk.a(edk_helpers.o)
+ .ARM.extab.text.s3eEdkErrorSetString
+                0x00001c54        0xc /Developer/Marmalade/6.0/s3e/edk/lib/android/libedk.a(edk_helpers.o)
+                0x00001c60                __exidx_start = .
+
+.ARM.exidx      0x00001c60       0x18
+ *(.ARM.exidx* .gnu.linkonce.armexidx.*)
+ .ARM.exidx.text.s3eEdkThreadRunOnOSAsync
+                0x00001c60        0x8 /Developer/Marmalade/6.0/s3e/edk/lib/android/libedk.a(edk_helpers.o)
+ .ARM.exidx.text.s3eEdkThreadRunOnOS
+                0x00001c68        0x8 /Developer/Marmalade/6.0/s3e/edk/lib/android/libedk.a(edk_helpers.o)
+ .ARM.exidx.text.s3eEdkErrorSetString
+                0x00001c70        0x8 /Developer/Marmalade/6.0/s3e/edk/lib/android/libedk.a(edk_helpers.o)
+                0x00001c78                __exidx_end = .
+
+.eh_frame_hdr
+ *(.eh_frame_hdr)
+
+.eh_frame
+ *(.eh_frame)
+
+.gcc_except_table
+ *(.gcc_except_table .gcc_except_table.*)
+                0x00001c78                . = (ALIGN (0x1000) - ((0x1000 - .) & 0xfff))
+                0x00002c78                . = (0x1000 DATA_SEGMENT_ALIGN 0x1000)
+
+.eh_frame
+ *(.eh_frame)
+
+.gcc_except_table
+ *(.gcc_except_table .gcc_except_table.*)
+
+.tdata
+ *(.tdata .tdata.* .gnu.linkonce.td.*)
+
+.tbss
+ *(.tbss .tbss.* .gnu.linkonce.tb.*)
+ *(.tcommon)
+
+.preinit_array
+ *(.preinit_array)
+
+.init_array
+ *(SORT(.init_array.*))
+ *(.init_array)
+
+.fini_array
+ *(.fini_array)
+ *(SORT(.fini_array.*))
+
+.ctors
+ *crtbegin.o(.ctors)
+ *crtbegin?.o(.ctors)
+ *(EXCLUDE_FILE(*crtend?.o *crtend.o) .ctors)
+ *(SORT(.ctors.*))
+ *(.ctors)
+
+.dtors
+ *crtbegin.o(.dtors)
+ *crtbegin?.o(.dtors)
+ *(EXCLUDE_FILE(*crtend?.o *crtend.o) .dtors)
+ *(SORT(.dtors.*))
+ *(.dtors)
+
+.jcr
+ *(.jcr)
+
+.data.rel.ro
+ *(.data.rel.ro.local* .gnu.linkonce.d.rel.ro.local.*)
+ *(.data.rel.ro* .gnu.linkonce.d.rel.ro.*)
+
+.dynamic        0x00002c78       0xc0
+ *(.dynamic)
+ .dynamic       0x00002c78       0xc0 release/ApplifierCrossPromotion_platform.os
+                0x00002c78                _DYNAMIC
+                0x00002d38                . = (. DATA_SEGMENT_RELRO_END 0x0)
+
+.got            0x00002d38       0x74
+ *(.got.plt)
+ .got.plt       0x00002d38       0x24 release/ApplifierCrossPromotion_platform.os
+                0x00002d38                _GLOBAL_OFFSET_TABLE_
+ *(.got)
+ .got           0x00002d5c       0x50 release/ApplifierCrossPromotion_platform.os
+
+.data           0x00002dac        0x0
+                0x00002dac                __data_start = .
+ *(.data .data.* .gnu.linkonce.d.*)
+ .data          0x00002dac        0x0 release/ApplifierCrossPromotion_platform.os
+ .data          0x00002dac        0x0 release/ApplifierCrossPromotion.os
+ .data          0x00002dac        0x0 release/ApplifierCrossPromotion_register.os
+ .data          0x00002dac        0x0 /Developer/Marmalade/6.0/s3e/edk/lib/android/libedk.a(edk_helpers.o)
+
+.data1
+ *(.data1)
+                0x00002dac                _edata = .
+                0x00002dac                PROVIDE (edata, .)
+                0x00002dac                __bss_start = .
+                0x00002dac                __bss_start__ = .
+
+.bss            0x00002dac       0x48
+ *(.dynbss)
+ .dynbss        0x00000000        0x0 release/ApplifierCrossPromotion_platform.os
+ *(.bss .bss.* .gnu.linkonce.b.*)
+ .bss           0x00002dac       0x48 release/ApplifierCrossPromotion_platform.os
+ .bss           0x00002df4        0x0 release/ApplifierCrossPromotion.os
+ .bss           0x00002df4        0x0 release/ApplifierCrossPromotion_register.os
+ .bss           0x00002df4        0x0 /Developer/Marmalade/6.0/s3e/edk/lib/android/libedk.a(edk_helpers.o)
+ *(COMMON)
+                0x00002df4                . = ALIGN ((. != 0x0)?0x4:0x1)
+                0x00002df4                _bss_end__ = .
+                0x00002df4                __bss_end__ = .
+                0x00002df4                . = ALIGN (0x4)
+                0x00002df4                . = ALIGN (0x4)
+                0x00002df4                __end__ = .
+                0x00002df4                _end = .
+                0x00002df4                PROVIDE (end, .)
+                0x00002df4                . = DATA_SEGMENT_END (.)
+
+.stab
+ *(.stab)
+
+.stabstr
+ *(.stabstr)
+
+.stab.excl
+ *(.stab.excl)
+
+.stab.exclstr
+ *(.stab.exclstr)
+
+.stab.index
+ *(.stab.index)
+
+.stab.indexstr
+ *(.stab.indexstr)
+
+.comment        0x00000000       0x61
+ *(.comment)
+ .comment       0x00000000       0x12 release/ApplifierCrossPromotion_platform.os
+ .comment       0x00000012       0x12 release/ApplifierCrossPromotion.os
+ .comment       0x00000024       0x12 release/ApplifierCrossPromotion_register.os
+ .comment       0x00000036       0x2b /Developer/Marmalade/6.0/s3e/edk/lib/android/libedk.a(edk_helpers.o)
+
+.debug
+ *(.debug)
+
+.line
+ *(.line)
+
+.debug_srcinfo
+ *(.debug_srcinfo)
+
+.debug_sfnames
+ *(.debug_sfnames)
+
+.debug_aranges
+ *(.debug_aranges)
+
+.debug_pubnames
+ *(.debug_pubnames)
+
+.debug_info
+ *(.debug_info .gnu.linkonce.wi.*)
+
+.debug_abbrev
+ *(.debug_abbrev)
+
+.debug_line
+ *(.debug_line)
+
+.debug_frame
+ *(.debug_frame)
+
+.debug_str
+ *(.debug_str)
+
+.debug_loc
+ *(.debug_loc)
+
+.debug_macinfo
+ *(.debug_macinfo)
+
+.debug_weaknames
+ *(.debug_weaknames)
+
+.debug_funcnames
+ *(.debug_funcnames)
+
+.debug_typenames
+ *(.debug_typenames)
+
+.debug_varnames
+ *(.debug_varnames)
+
+.debug_pubtypes
+ *(.debug_pubtypes)
+
+.debug_ranges
+ *(.debug_ranges)
+
+.gnu.attributes
+ *(.gnu.attributes)
+
+.note.gnu.arm.ident
+ *(.note.gnu.arm.ident)
+
+/DISCARD/
+ *(.note.GNU-stack)
+ *(.gnu_debuglink)
+OUTPUT(/Users/bluesun/Work/applifier-marmalade/lib/lib/android/libApplifierCrossPromotion.so elf32-littlearm)
+
+.ARM.attributes
+                0x00000000       0x2a
+ .ARM.attributes
+                0x00000000       0x28 release/ApplifierCrossPromotion_platform.os
+ .ARM.attributes
+                0x00000028       0x28 release/ApplifierCrossPromotion.os
+ .ARM.attributes
+                0x00000050       0x28 release/ApplifierCrossPromotion_register.os
+ .ARM.attributes
+                0x00000078       0x2c /Developer/Marmalade/6.0/s3e/edk/lib/android/libedk.a(edk_helpers.o)
