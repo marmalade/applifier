@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2001-2011 Ideaworks3D Ltd.
+ * Copyright (C) 2001-2012 Ideaworks3D Ltd.
  * All Rights Reserved.
  *
  * This document is protected by copyright, and contains information
